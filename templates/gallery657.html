@@ -1,0 +1,43 @@
+
+{% extends "base_gallery657.html" %}
+
+{% load static from staticfiles %}
+
+{% block app %}
+
+{% for art in gallery %}
+    {{ art.title }}
+    <br>
+    {% if gallery.has_previous %}
+        <a href="?page={{ gallery.previous_page_number }}">
+            <
+        </a>
+    {% else %}
+        <span class=toinfinity>
+            <
+        </span>
+    {% endif %}
+    {% if art.file_type in 'video/mp4, video/webm, video/ogg' %}
+        <video class="top" controls>
+            <source src="{{ MEDIA_URL }}{{ art.media_file }}"
+                    type="{{ art.file_type }}">
+            Your browser does not support the video tag.
+        </video>
+    {% else %}
+        <img class="top"
+             src="{{ MEDIA_URL }}{{ art.media_file }}"
+             alt="{{ art.title }}"/>
+    {% endif %}
+    {% if gallery.has_next %}
+        <a href="?page={{ gallery.next_page_number }}">
+            >
+        </a>
+    {% else %}
+        <span class=toinfinity>
+            >
+        </span>
+    {% endif %}
+{% endfor %}
+{% endblock %}
+
+
