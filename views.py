@@ -7,7 +7,7 @@ from gallery657.models import MediaFile
 
 def gallery657(request):
 
-    gallery = MediaFile.objects.all()
+    gallery = MediaFile.objects.all().order_by('-pub_date')
     paginator = Paginator(gallery, 1)
     
     page = request.GET.get('page')
