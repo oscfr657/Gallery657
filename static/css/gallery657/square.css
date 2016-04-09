@@ -1,7 +1,7 @@
 
-#app {
+#gallery {
 position: absolute;
-top: 101px;
+top: 0px;
 left: 0px;
 right: 0px;
 bottom: 0px;
@@ -13,7 +13,7 @@ font-size: 30;
 text-decoration: none;
 }
 
-#app .toinfinity {
+#gallery .toinfinity {
 text-decoration: none;
 background-color: white;
 color: #AAA;
@@ -21,7 +21,7 @@ font-family: Arial;
 font-size: 50;
 }
 
-#app a {
+#gallery a {
 text-decoration: none;
 background-color: white;
 color:#aa0909;
@@ -29,7 +29,7 @@ font-family: Arial;
 font-size: 50;
 }
 
-#app a:hover{
+#gallery a:hover{
 color:red;
 }
 

@@ -4,7 +4,7 @@
 {% load static from staticfiles %}
 
 {% block app %}
-
+<div id=gallery>
 {% for art in gallery %}
     {{ art.title }}
     <br>
@@ -38,6 +38,7 @@
         </span>
     {% endif %}
 {% endfor %}
+</div>
 {% endblock %}
 
 
