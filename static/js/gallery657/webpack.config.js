@@ -59,6 +59,8 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+    // optimize module ids by occurrence count
+    new webpack.optimize.OccurrenceOrderPlugin()
   ])
 }
