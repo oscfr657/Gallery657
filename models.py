@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.db import models
-from django.conf import settings
+import magic
 from time import time
+
+from django.db import models
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 def unique_file_name(instance, filename):
@@ -13,20 +15,26 @@ def unique_file_name(instance, filename):
     path = u"{}/{}-{}".format(directory, epoch_time, filename)
     return path
 
+video_types = ['video/mp4',
+               'video/webm',
+               'video/ogg']
+
+image_types = ['image/png',
+               'image/jpeg',
+               'image/jpg']
+
 
 def validate_file_type(media_file):
     try:
-        file_type = media_file.file.content_type
-        valid_types = ['video/mp4',
-                       'video/webm',
-                       'video/ogg',
-                       'image/png',
-                       'image/jpeg']
-        if not file_type in valid_types:
-            raise ValidationError(u'File type not supported!')
-    except ValueError:
-        pass
-    
+        file_type = magic.from_buffer(
+            media_file.file.read(),
+            mime=True)
+        if not (file_type in video_types or file_type in image_types):
+            raise ValidationError(
+                u'File type not supported!')
+    except (IOError, ValueError, AttributeError):
+        raise ValidationError(u'File type not supported!')
+
 
 class MediaFile(models.Model):
     media_file = models.FileField(upload_to=unique_file_name,
@@ -35,8 +43,10 @@ class MediaFile(models.Model):
     pub_date = models.DateTimeField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
 
+    class Meta:
+        ordering = ['pk']
+
     def __unicode__(self):
         if self.title:
             return u'%s' % self.title
         return ''
-

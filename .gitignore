@@ -1,3 +1,4 @@
 todo.txt*
 **.pyc
-
+.idea
+static/js/gallery657/node_modules

@@ -7,30 +7,33 @@ right: 0px;
 bottom: 0px;
 color:#aa0909;
 text-align:center;
-font-family: Arial;
 font-size: 30;
 text-decoration: none;
+}
+
+.galleries a {
+font-size: 40px;
 }
 
 #gallery .toinfinity {
 text-decoration: none;
 color: #AAA;
-font-family: Arial;
-font-size: 60;
+}
+
+#gallery h2 {
+margin: 0;
 }
 
 #gallery a {
 text-decoration: none;
 color:#aa0909;
-font-family: Arial;
-font-size: 60;
 }
 
 #gallery a:hover{
 color:red;
 }
 
-img.top {
+#gallery img {
 vertical-align: middle;
 height:400px;
 }

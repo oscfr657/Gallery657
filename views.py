@@ -2,14 +2,15 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from rest_framework.viewsets import ReadOnlyModelViewSet
+
 from gallery657.models import MediaFile
+from gallery657.serializers import MediaFileSerializer
 
 
 def gallery657(request):
-
     gallery = MediaFile.objects.all().order_by('-pub_date')
     paginator = Paginator(gallery, 1)
-    
     page = request.GET.get('page')
     try:
         arts = paginator.page(page)
@@ -17,9 +18,15 @@ def gallery657(request):
         arts = paginator.page(1)
     except EmptyPage:
         arts = paginator.page(paginator.num_pages)
-
     dictionary = {'gallery': arts}
-
     return render(request, 'gallery657.html', dictionary)
 
+
+def gallery_vue(request):
+    return render(request, 'gallery_vue.html')
+
+
+class MediaFileViewSet(ReadOnlyModelViewSet):
+    queryset = MediaFile.objects.all()
+    serializer_class = MediaFileSerializer
 

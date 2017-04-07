@@ -1,10 +1,12 @@
-from django.apps import AppConfig
-from django.conf.urls import patterns, url
-from django.contrib.auth.decorators import login_required
 
-from gallery657.views import gallery657
+from django.conf.urls import url, include
+
+from gallery657.views import gallery657, gallery_vue
+from gallery657.routers import gallery657_router
 
 
-urlpatterns = patterns('',
-    url(r'^$', gallery657, name='gallery'),
-)
+urlpatterns = [
+    url(r'^$', gallery_vue, name='gallery_vue'),
+    url(r'^old/', gallery657, name='gallery'),
+    url(r'^api/', include(gallery657_router.urls)),
+]
