@@ -11,16 +11,24 @@ font-size: 30;
 text-decoration: none;
 }
 
-.galleries a {
-font-size: 40px;
+#gallery td {
+text-align: center;
+font-size: 100;
+}
+
+.edge {
+width: 20%;
 }
 
 #gallery .toinfinity {
-text-decoration: none;
 color: #AAA;
 }
 
-#gallery h2 {
+#gallery .galleries {
+font-size: 40px;
+}
+
+#gallery h2, h3 {
 margin: 0;
 }
 
@@ -35,5 +43,6 @@ color:red;
 
 #gallery img {
 vertical-align: middle;
-height:400px;
+max-height:400px;
+max-width: 100%;
 }

@@ -154,6 +154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -171,6 +172,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -247,8 +267,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__App_vue___default.a }, { path: '/art', component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }, { path: '/art/:id', name: 'art_id',
-        component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }]
+  routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__App_vue___default.a,
+    children: [{ path: 'art', component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }, { path: 'art/:id', name: 'art_id', component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }]
+  }]
 });
 
 /***/ }),
@@ -322,7 +343,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/art"
     }
-  }, [_vm._v("Art")])], 1)
+  }, [_vm._v("Art")]), _vm._v(" "), _c('router-view')], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -330,7 +351,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.prev) ? _c('router-link', {
+  return _c('div', [_c('h3', [_vm._v(_vm._s(_vm.art.title))]), _vm._v(" "), _c('table', {
+    staticStyle: {
+      "width": "100%"
+    }
+  }, [_c('tr', [_c('td', {
+    staticClass: "edge"
+  }, [(_vm.prev) ? _c('router-link', {
     attrs: {
       "to": {
         name: 'art_id',
@@ -339,9 +366,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }, [_vm._v("Prev")]) : _c('span', {
+  }, [_c('span', [_vm._v("<")])]) : _c('span', {
     staticClass: "toinfinity"
-  }, [_vm._v("Prev")]), _vm._v(" "), (_vm.next) ? _c('router-link', {
+  }, [_vm._v("<")])], 1), _vm._v(" "), _c('td', [(_vm.art) ? _c('img', {
+    attrs: {
+      "src": _vm.art.media_file,
+      "alt": _vm.art.title
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('td', {
+    staticClass: "edge"
+  }, [(_vm.next) ? _c('router-link', {
     attrs: {
       "to": {
         name: 'art_id',
@@ -350,14 +384,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }, [_vm._v("Next")]) : _c('span', {
+  }, [_c('span', [_vm._v(">")])]) : _c('span', {
     staticClass: "toinfinity"
-  }, [_vm._v("Next")]), _vm._v(" "), _c('h2', [_vm._v(_vm._s(_vm.art.title))]), _vm._v(" "), (_vm.art) ? _c('img', {
-    attrs: {
-      "src": _vm.art.media_file,
-      "alt": _vm.art.title
-    }
-  }) : _vm._e()], 1)
+  }, [_vm._v(">")])], 1)])])])
 },staticRenderFns: []}
 
 /***/ })

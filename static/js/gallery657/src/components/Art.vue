@@ -1,15 +1,34 @@
 
 <template>
 <div>
-<router-link :to="{ name: 'art_id', params: { id:prev}}" v-if="prev">Prev</router-link>
-<span class=toinfinity v-else>Prev</span>
 
-<router-link :to="{ name: 'art_id', params: { id:next}}" v-if="next">Next</router-link>
-<span class=toinfinity v-else>Next</span>
+<h3>{{ art.title }}</h3>
 
-<h2>{{ art.title }}</h2>
+<table style="width:100%;">
+<tr>
 
+<td class="edge">
+<router-link :to="{ name: 'art_id', params: { id:prev}}" v-if="prev">
+<span ><</span>
+</router-link>
+<span class="toinfinity" v-else><</span>
+</td>
+
+<td>
 <img v-if="art" :src="art.media_file" :alt="art.title"/>
+</td>
+
+<td class="edge">
+<router-link :to="{ name: 'art_id', params: { id:next}}" v-if="next">
+<span>></span>
+</router-link>
+<span class="toinfinity" v-else>></span>
+</td>
+
+</tr>
+
+</table>
+
 </div>
 </template>
 
