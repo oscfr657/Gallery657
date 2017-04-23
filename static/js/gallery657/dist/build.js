@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -129,7 +129,7 @@ module.exports = function normalizeComponent (
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(4),
+  __webpack_require__(3),
   /* template */
   null,
   /* scopeId */
@@ -143,31 +143,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'app',
-  data() {
-    return {
-      msg: 'Welcome to my galleries'
-    };
-  }
-});
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -252,28 +227,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Art_vue__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Art_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Art_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Art_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Art_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Art_vue__);
 //
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__App_vue___default.a,
-    children: [{ path: 'art', component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }, { path: 'art/:id', name: 'art_id', component: __WEBPACK_IMPORTED_MODULE_1__Art_vue___default.a }]
-  }]
+  routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__Art_vue___default.a }, { path: '/:id', name: 'art_id', component: __WEBPACK_IMPORTED_MODULE_0__Art_vue___default.a }]
 });
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -282,9 +252,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Router_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Router_vue__);
 
 
-
-console.log('test');
-console.log(__WEBPACK_IMPORTED_MODULE_0__components_Router_vue__["routes"]);
 
 const router = new VueRouter({
     //mode: 'history',
@@ -298,14 +265,14 @@ new Vue({
 });
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(2),
   /* template */
-  __webpack_require__(8),
+  __webpack_require__(6),
   /* scopeId */
   null,
   /* cssModules */
@@ -316,38 +283,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(3),
-  /* template */
-  __webpack_require__(9),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h2', [_vm._v(_vm._s(_vm.msg))]), _vm._v(" "), _c('router-link', {
-    staticClass: "galleries",
-    attrs: {
-      "to": "/art"
-    }
-  }, [_vm._v("Art")]), _vm._v(" "), _c('router-view')], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 9 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
