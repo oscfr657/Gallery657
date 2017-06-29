@@ -1,7 +1,9 @@
 <template>
-  <div>
-  <h2>{{ msg }}</h2>
-  <router-link class=galleries to="/art">Art</router-link>
+  <div id="list">
+  <router-link class=galleries to="/art">Paintings</router-link>
+  <router-view></router-view>
+  </div>
+  <div >
   <router-view></router-view>
   </div>
 </template>
@@ -9,7 +11,7 @@
 <script>
 
 export default {
-  name: 'app',
+  name: 'gallery',
   data () {
     return {
       msg: 'Welcome to my galleries'
