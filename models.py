@@ -41,7 +41,19 @@ def validate_file_type(media_file):
         raise ValidationError(u'File type not supported!')
 
 
+class Collection(models.Model):
+    title = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return u'%s' % self.title
+
+
 class MediaFile(models.Model):
+    collection = models.ForeignKey(Collection,
+                                   related_name="media_file",
+                                   related_query_name="media_files",
+                                   blank=True,
+                                   null=True)
     media_file = models.FileField(upload_to=unique_file_name,
                                   validators=[validate_file_type])
     file_type = models.CharField(max_length=25,

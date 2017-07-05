@@ -4,8 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from gallery657.models import MediaFile
-from gallery657.serializers import MediaFileSerializer
+from gallery657.models import MediaFile, Collection
+from gallery657.serializers import MediaFileSerializer, CollectionSerializer
 
 
 def gallery657(request):
@@ -30,3 +30,18 @@ class MediaFileViewSet(ReadOnlyModelViewSet):
     queryset = MediaFile.objects.all()
     serializer_class = MediaFileSerializer
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = MediaFile.objects.all()
+        collection = self.request.query_params.get('collection', None)
+        if collection is not None:
+            queryset = queryset.filter(collection=collection)
+        return queryset
+
+
+class CollectionViewSet(ReadOnlyModelViewSet):
+    queryset = Collection.objects.all()
+    serializer_class = CollectionSerializer

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -129,7 +129,7 @@ module.exports = function normalizeComponent (
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(3),
+  __webpack_require__(4),
   /* template */
   null,
   /* scopeId */
@@ -159,38 +159,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'art',
+  name: 'collection',
   data() {
     return {
-      prev: null,
-      art: null,
-      next: null
+      collection: []
     };
   },
   created() {
@@ -201,27 +176,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     fetchData() {
-      this.art = null;
-      var image_id = 1;
-      if (this.$route.params.id) {
-        image_id = this.$route.params.id;
+      if (this.$route.params.collection) {
+        this.collection = this.$route.params.collection;
+        console.log(this.collection);
+        this.$http.get('/gallery/api/media_file/?collection=' + this.collection).then(response => {
+          this.collection = response.body.results;
+        }, response => {
+          console.log('error');
+        });
       }
-      this.$http.get('/gallery/api/mediafiles/').then(response => {
-        var count = response.body.count;
-        this.art = response.body.results[image_id - 1];
-        if (this.art.pk > 1) {
-          this.prev = this.art.pk - 1;
-        } else {
-          this.prev = false;
-        }
-        if (this.art.pk < count) {
-          this.next = this.art.pk + 1;
-        } else {
-          this.next = false;
-        }
-      }, response => {
-        console.log('error');
-      });
     }
   }
 });
@@ -232,18 +195,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Art_vue__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Art_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Art_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__Art_vue___default.a }, { path: '/:id', name: 'art_id', component: __WEBPACK_IMPORTED_MODULE_0__Art_vue___default.a }]
+  name: 'gallery',
+  data() {
+    return {
+      collections: [{ title: 'paintings', pk: 1 }]
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  watch: {
+    '$route': 'fetchData'
+  },
+  methods: {
+    fetchData() {
+      this.$http.get('/gallery/api/collection/').then(response => {
+        this.collections = response.body.results;
+      }, response => {
+        console.log('error');
+      });
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }
 });
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Collection_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Collection_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Collection_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Gallery_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Gallery_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Gallery_vue__);
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  routes: [{ path: '/',
+    component: __WEBPACK_IMPORTED_MODULE_1__Gallery_vue___default.a,
+    children: [{
+      path: '/:collection/',
+      name: 'collection',
+      component: __WEBPACK_IMPORTED_MODULE_0__Collection_vue___default.a
+    }]
+  }]
+});
+
+/***/ }),
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -265,14 +292,14 @@ new Vue({
 });
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(2),
   /* template */
-  __webpack_require__(6),
+  __webpack_require__(8),
   /* scopeId */
   null,
   /* cssModules */
@@ -283,46 +310,68 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(3),
+  /* template */
+  __webpack_require__(9),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h3', [_vm._v(_vm._s(_vm.art.title))]), _vm._v(" "), _c('table', {
-    staticStyle: {
-      "width": "100%"
-    }
-  }, [_c('tr', [_c('td', {
-    staticClass: "edge"
-  }, [(_vm.prev) ? _c('router-link', {
+  return _c('div', {
+    staticClass: "collection"
+  }, _vm._l((_vm.collection), function(art) {
+    return _c('div', {
+      staticClass: "art_item"
+    }, [_c('img', {
+      attrs: {
+        "src": art.media_file,
+        "alt": art.title
+      }
+    })])
+  }))
+},staticRenderFns: []}
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
     attrs: {
-      "to": {
-        name: 'art_id',
-        params: {
-          id: _vm.prev
+      "id": "collection_list"
+    }
+  }, [_c('ul', _vm._l((_vm.collections), function(collection) {
+    return _c('li', [_c('router-link', {
+      staticClass: "galleries",
+      attrs: {
+        "to": {
+          name: 'collection',
+          params: {
+            collection: collection.pk
+          }
         }
       }
-    }
-  }, [_c('span', [_vm._v("<")])]) : _c('span', {
-    staticClass: "toinfinity"
-  }, [_vm._v("<")])], 1), _vm._v(" "), _c('td', [(_vm.art) ? _c('img', {
+    }, [_vm._v(_vm._s(_vm._f("capitalize")(collection.title)))])], 1)
+  }))]), _vm._v(" "), _c('div', {
     attrs: {
-      "src": _vm.art.media_file,
-      "alt": _vm.art.title
+      "id": "collection_view"
     }
-  }) : _vm._e()]), _vm._v(" "), _c('td', {
-    staticClass: "edge"
-  }, [(_vm.next) ? _c('router-link', {
-    attrs: {
-      "to": {
-        name: 'art_id',
-        params: {
-          id: _vm.next
-        }
-      }
-    }
-  }, [_c('span', [_vm._v(">")])]) : _c('span', {
-    staticClass: "toinfinity"
-  }, [_vm._v(">")])], 1)])])])
+  }, [_c('router-view')], 1)])
 },staticRenderFns: []}
 
 /***/ })

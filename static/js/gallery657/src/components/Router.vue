@@ -1,12 +1,20 @@
 
 <script>
-import Art from './Art.vue'
-import App from './App.vue'
+import Collection from './Collection.vue'
+import Gallery from './Gallery.vue'
 
 export default {
   routes: [
-    { path: '/', component: App },
-    { path: '/:id', name: 'art_id', component: Art }
+    { path: '/',
+      component: Gallery,
+        children: [
+          {
+            path: '/:collection/',
+            name: 'collection',
+            component: Collection
+          }
+        ]
+    },
   ]
 }
 </script>

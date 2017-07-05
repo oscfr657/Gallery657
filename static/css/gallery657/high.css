@@ -11,27 +11,6 @@ font-size: 30;
 text-decoration: none;
 }
 
-#gallery td {
-text-align: center;
-font-size: 50;
-}
-
-.edge {
-width: 30px;
-}
-
-#gallery .toinfinity {
-color: #AAA;
-}
-
-#gallery .galleries {
-font-size: 40px;
-}
-
-#gallery h2, h3 {
-margin: 0;
-}
-
 #gallery a {
 text-decoration: none;
 color: #aa0909;
@@ -41,8 +20,30 @@ color: #aa0909;
 color: red;
 }
 
+
+#collection_list {
+  float:left;
+  width: 200px;
+}
+
+#collection_list li {
+  list-style-type: none;
+}
+
+#collection_view{
+  float: left;
+  padding: 20px;
+}
+
+.art_item {
+float:left;
+max-width: 300px;
+margin: 10px;
+}
+
+
 #gallery img {
 vertical-align: middle;
-max-height: 400px;
-max-width: 100%;
+max-height: 200px;
+max-width: 200px;
 }
