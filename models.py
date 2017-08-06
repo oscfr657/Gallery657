@@ -44,6 +44,9 @@ def validate_file_type(media_file):
 class Collection(models.Model):
     title = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ['pk']
+
     def __unicode__(self):
         return u'%s' % self.title
 
