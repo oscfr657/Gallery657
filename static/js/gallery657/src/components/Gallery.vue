@@ -17,21 +17,21 @@
 
 export default {
   name: 'gallery',
-  data () {
+  data: function () {
     return {
       collections: [
         { title: 'paintings', pk: 1 },
       ]
       }
   },
-  created () {
+  created: function () {
     this.fetchData()
   },
   watch: {
     '$route': 'fetchData'
   },
   methods: {
-    fetchData () {
+    fetchData() {
       this.$http.get('/gallery/api/collection/').then(response => {
         this.collections = response.body.results;
         }, response => {

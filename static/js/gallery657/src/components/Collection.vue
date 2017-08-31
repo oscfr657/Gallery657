@@ -14,22 +14,21 @@
 
 export default {
   name: 'collection',
-  data () {
+  data: function () {
     return {
       collection: [],
     }
   },
-  created () {
+  created: function () {
     this.fetchData()
   },
   watch: {
     '$route': 'fetchData'
   },
   methods: {
-    fetchData () {
+    fetchData: function () {
       if (this.$route.params.collection) {
         this.collection = this.$route.params.collection
-        console.log(this.collection);
         this.$http.get('/gallery/api/media_file/?collection='+this.collection).then(response => {
           this.collection = response.body.results;
           }, response => {
