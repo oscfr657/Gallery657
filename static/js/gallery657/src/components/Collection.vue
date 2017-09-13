@@ -1,6 +1,6 @@
 
 <template>
-<div class="collection">
+<div id="collection_view">
 
 <div v-for="art in collection" class="art_item">
 <img :src="art.media_file" :alt="art.title"/>

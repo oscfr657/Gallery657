@@ -12,11 +12,15 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
+        use: {
+          loader: 'vue-loader',
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         }
       },
       {
@@ -27,6 +31,11 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
   performance: {
     hints: 'warning'
@@ -39,11 +48,9 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      minimize: true
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+      compress: {
+        warnings: false
+      }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ])

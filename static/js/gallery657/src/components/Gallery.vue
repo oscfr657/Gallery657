@@ -1,15 +1,10 @@
 <template>
   <div >
     <div id="collection_list">
-    <ul >
-      <li v-for="collection in collections" >
-        <router-link class="galleries" :to="{ name: 'collection', params: { collection:collection.pk } }">{{ collection.title| capitalize }}</router-link>
-      </li>
-    </ul>
+      <router-link v-for="collection in collections" :to="{ name: 'collection', params: { collection:collection.pk } }">
+      <button>{{ collection.title| capitalize }}</button><br></router-link>
     </div>
-    <div id="collection_view">
     <router-view></router-view>
-    </div>
   </div>
 </template>
 

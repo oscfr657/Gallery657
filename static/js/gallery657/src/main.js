@@ -3,7 +3,7 @@ import { routes } from './components/Router.vue'
 
 const router = new VueRouter({
     //mode: 'history',
-    base: '/gallery',
+    base: '/gallery/',
     routes
     })
 

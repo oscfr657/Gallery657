@@ -1,42 +1,19 @@
 
 #gallery {
-position: absolute;
-top: 0px;
 left: 0px;
 right: 0px;
-bottom: 0px;
-color:#aa0909;
-text-align:center;
-font-size: 30;
-text-decoration: none;
+font-size: 30px;
 }
-
-#gallery a {
-text-decoration: none;
-color: #aa0909;
-}
-
-#gallery a:hover{
-color: red;
-}
-
 
 #collection_list {
-  float:left;
-  width: 200px;
+  width: 150px;
 }
 
-#collection_list li {
-  list-style-type: none;
-}
-
-#collection_view{
-  float: left;
-  padding: 20px;
+#collection_view {
+  overflow-x: scroll;
 }
 
 .art_item {
-float:left;
 max-width: 300px;
 margin: 10px;
 }
