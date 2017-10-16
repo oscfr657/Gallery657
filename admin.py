@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-from gallery657.models import MediaFile, Collection
+from gallery657.models import Art, Collection
 
 # Customize this, plz.
-admin.site.register(MediaFile)
 admin.site.register(Collection)
+
+admin.site.register(Art)

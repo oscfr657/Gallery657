@@ -4,12 +4,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from gallery657.models import MediaFile, Collection
-from gallery657.serializers import MediaFileSerializer, CollectionSerializer
+from gallery657.models import Art, Collection
+from gallery657.serializers import ArtSerializer, CollectionSerializer
 
 
 def gallery657(request):
-    gallery = MediaFile.objects.all().order_by('-pub_date')
+    gallery = Art.objects.all().order_by('-pub_date')
     paginator = Paginator(gallery, 1)
     page = request.GET.get('page')
     try:
@@ -26,16 +26,16 @@ def gallery_vue(request):
     return render(request, 'gallery_vue.html')
 
 
-class MediaFileViewSet(ReadOnlyModelViewSet):
-    queryset = MediaFile.objects.all()
-    serializer_class = MediaFileSerializer
+class ArtViewSet(ReadOnlyModelViewSet):
+    queryset = Art.objects.all()
+    serializer_class = ArtSerializer
 
     def get_queryset(self):
         """
         Optionally restricts the returned purchases to a given user,
         by filtering against a `username` query parameter in the URL.
         """
-        queryset = MediaFile.objects.all()
+        queryset = Art.objects.all()
         collection = self.request.query_params.get('collection', None)
         if collection is not None:
             queryset = queryset.filter(collection=collection)

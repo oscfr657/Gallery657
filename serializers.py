@@ -1,12 +1,12 @@
 
 from rest_framework import serializers
 
-from gallery657.models import MediaFile, Collection
+from gallery657.models import Art, Collection
 
 
-class MediaFileSerializer(serializers.ModelSerializer):
+class ArtSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MediaFile
+        model = Art
         fields = ('pk', 'collection', 'media_file', 'title', 'file_type', 'pub_date')
 
 

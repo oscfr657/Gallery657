@@ -29,7 +29,7 @@ export default {
     fetchData: function () {
       if (this.$route.params.collection) {
         this.collection = this.$route.params.collection
-        this.$http.get('/gallery/api/media_file/?collection='+this.collection).then(response => {
+        this.$http.get('/gallery/api/art/?collection='+this.collection).then(response => {
           this.collection = response.body.results;
           }, response => {
             console.log('error');

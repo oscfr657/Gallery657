@@ -51,10 +51,9 @@ class Collection(models.Model):
         return u'%s' % self.title
 
 
-class MediaFile(models.Model):
+class Art(models.Model):
     collection = models.ForeignKey(Collection,
-                                   related_name="media_file",
-                                   related_query_name="media_files",
+                                   related_name="art",
                                    blank=True,
                                    null=True)
     media_file = models.FileField(upload_to=unique_file_name,
@@ -75,7 +74,7 @@ class MediaFile(models.Model):
 
     def save(self):
         # First doing a normal save
-        super(MediaFile, self).save()
+        super(Art, self).save()
         # Then we try to optimize
         try:
             file_type = magic.from_buffer(
@@ -99,6 +98,6 @@ class MediaFile(models.Model):
                                      image_file.read(),
                                      content_type=file_type)
             self.media_file.save(suf.name, suf, save=False)
-            super(MediaFile, self).save()
+            super(Art, self).save()
         except (IOError, ValueError, AttributeError):
             pass  # We should probably log this.
