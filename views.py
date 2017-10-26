@@ -31,10 +31,6 @@ class ArtViewSet(ReadOnlyModelViewSet):
     serializer_class = ArtSerializer
 
     def get_queryset(self):
-        """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
-        """
         queryset = Art.objects.all()
         collection = self.request.query_params.get('collection', None)
         if collection is not None:
