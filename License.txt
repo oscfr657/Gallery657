@@ -149,7 +149,7 @@ TERMS AND CONDITIONS
     except as required for reasonable and customary use in describing the
     origin of the Work and reproducing the content of the NOTICE file.
 
-    Neither the name of the product nor the names of its
+    Neither the name of the work nor the names of its
     contributors may be used to endorse or promote products derived from
     this software without specific prior written permission.
 

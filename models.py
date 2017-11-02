@@ -61,6 +61,7 @@ class Art(models.Model):
     file_type = models.CharField(max_length=25,
                                  blank=True,
                                  null=True)
+    thumb_nail = models.FileField(blank=True, null=True)
     pub_date = models.DateTimeField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
 
