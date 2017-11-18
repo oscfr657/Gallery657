@@ -2,6 +2,7 @@
   <div >
     <div id="collection_list">
       <router-link v-for="collection in collections" :to="{ name: 'collection', params: { collection:collection.pk } }">
+      <br>
       <button>{{ collection.title| capitalize }}</button><br></router-link>
     </div>
     <router-view></router-view>
