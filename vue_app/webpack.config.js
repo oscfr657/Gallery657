@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './../static/js/gallery657//dist'),
+    path: path.resolve(__dirname, './../static/js/gallery657/dist'),
     publicPath: '/dist/',
     filename: 'build.js'
   },
