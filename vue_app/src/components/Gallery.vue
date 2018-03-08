@@ -1,5 +1,11 @@
 <template>
   <div >
+    <div v-if="loading" >
+    Loading...
+    </div>
+    <div v-if="error" >
+      {{ error }}
+    </div>
     <div id="collection_list">
       <router-link v-for="collection in collections" :to="{ name: 'collection', params: { collection:collection.pk } }">
       <br>
@@ -15,8 +21,10 @@ export default {
   name: 'gallery',
   data: function () {
     return {
+      loading: false,
+      error: null,
       collections: [
-        { title: 'paintings', pk: 1 },
+        { title: 'Loading', pk: 0 },
       ]
       }
   },
@@ -28,6 +36,8 @@ export default {
   },
   methods: {
     fetchData() {
+      this.error = this.collections = null
+      this.loading = true
       this.$http.get('/gallery/api/collection/').then(response => {
         this.collections = response.body.results;
         }, response => {
