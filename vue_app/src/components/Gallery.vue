@@ -41,7 +41,7 @@ export default {
       this.loading = true
       this.$http.get('/gallery/api/collection/').then(response => {
         this.loading = false
-        this.collections = response.body.results;
+        this.collections = response.body;
         }, response => {
           console.log('error')
         });
