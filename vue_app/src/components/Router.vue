@@ -9,7 +9,7 @@ export default {
       component: Gallery,
         children: [
           {
-            path: '/:collection/',
+            path: '/:number/',
             name: 'collection',
             component: Collection
           }

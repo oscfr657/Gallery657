@@ -6,12 +6,14 @@
     <div v-if="error" >
       {{ error }}
     </div>
-    <div id="collection_list">
-      <router-link v-for="collection in collections" :to="{ name: 'collection', params: { collection:collection.pk } }">
+    <div id="collection_list" v-if="collections">
+      <router-link v-for="collection in collections" :to="{ name: 'collection', params: { number:collection.pk } }">
       <br>
       <button>{{ collection.title| capitalize }}</button><br></router-link>
     </div>
-    <router-view></router-view>
+    <div v-if="collections" >
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -19,34 +21,34 @@
 
 export default {
   name: 'gallery',
-  data: function () {
+  data () {
     return {
       loading: false,
       error: null,
-      collections: [
-        { title: 'Loading', pk: 0 },
-      ]
+      collections: false
       }
   },
-  created: function () {
+  created () {
     this.fetchData()
   },
   watch: {
     '$route': 'fetchData'
   },
   methods: {
-    fetchData() {
-      this.error = this.collections = null
+    fetchData () {
+      this.error = null
+      this.collections = false
       this.loading = true
       this.$http.get('/gallery/api/collection/').then(response => {
+        this.loading = false
         this.collections = response.body.results;
         }, response => {
-          console.log('error');
+          console.log('error')
         });
     }
   },
   filters: {
-    capitalize: function (value) {
+    capitalize (value) {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
