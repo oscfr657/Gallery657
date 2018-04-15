@@ -29,6 +29,7 @@ def gallery_vue(request):
 class ArtViewSet(ReadOnlyModelViewSet):
     queryset = Art.objects.all()
     serializer_class = ArtSerializer
+    pagination_class = None
 
     def get_queryset(self):
         queryset = Art.objects.all()
@@ -41,3 +42,4 @@ class ArtViewSet(ReadOnlyModelViewSet):
 class CollectionViewSet(ReadOnlyModelViewSet):
     queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
+    pagination_class = None
