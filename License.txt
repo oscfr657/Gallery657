@@ -1,6 +1,6 @@
 License
 
-Copyright (c) 2015 Oscar Fröberg
+Copyright (c) 2018 Oscar Fröberg
 
 
 Use of this software and associated documentation files (the Work), 
@@ -157,8 +157,8 @@ TERMS AND CONDITIONS
     Unless required by applicable law or
     agreed to in writing, Licensor provides the Work 
     (and each Contributor provides its Contributions) on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-    implied, including, without limitation, any warranties or conditions
+    WITHOUT WARRANTIES OF ANY KIND, either express or
+    implied, including, without limitation, any warranties
     of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
     PARTICULAR PURPOSE. You are solely responsible for determining the
     appropriateness of using or redistributing the Work and assume any
@@ -202,12 +202,6 @@ TERMS AND CONDITIONS
 
 END OF TERMS AND CONDITIONS
 
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
 
    The views and conclusions contained in the software and documentation are
    those of the authors and should not be interpreted as representing official
