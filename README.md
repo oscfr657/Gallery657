@@ -1,31 +1,22 @@
-# README #
+# Gallery 657 #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A small picture gallery VueJs app with Django backend.
 
-### What is this repository for? ###
+### Installation ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-# Fix this!!!
-
-* Summary of set up
 * Configuration
+
+  Add 'gallery657' to the INSTALLED_APPS setting.
+  
 * Dependencies
+  
+  Django REST Framework
+
 * Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
+  Run: python manage.py migrate gallery657
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+#### Live example ####
+  www.oscfr.se/gallery
+  
