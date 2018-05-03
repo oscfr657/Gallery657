@@ -12,8 +12,9 @@ class ArtAdmin(admin.ModelAdmin):
 
 class ArtInline(admin.TabularInline):
     model = Art
-    fields = ('title', 'pub_date', 'thumb_nail', 'media_file', 'file_type')
-    readonly_fields = ('file_type', 'pub_date', 'thumb_nail', 'media_file', )
+    extra = 1
+    fields = ('title', 'pub_date', 'media_file', 'thumb_nail', 'file_type')
+    readonly_fields = ('file_type', 'thumb_nail', )
 
 
 class CollectionAdmin(admin.ModelAdmin):

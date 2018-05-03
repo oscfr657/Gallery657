@@ -19,7 +19,7 @@ class GetAllCollectionsTest(TestCase):
         response = client.get('/gallery/api/collection/')
         collections = Collection.objects.all()
         serializer = CollectionSerializer(collections, many=True)
-        self.assertEqual(response.data['results'], serializer.data)
+        self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
