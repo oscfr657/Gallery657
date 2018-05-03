@@ -6,7 +6,7 @@ from gallery657.models import Art, Collection
 class ArtAdmin(admin.ModelAdmin):
     fields = ('title', 'pub_date', 'media_file',
               'thumb_nail', 'file_type', 'collection')
-    readonly_fields = ('file_type', 'thumb_nail', 'collection')
+    readonly_fields = ('file_type', 'thumb_nail')
     date_hierarchy = 'pub_date'
 
 
