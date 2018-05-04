@@ -10,11 +10,13 @@ import os
 # from django.utils import timezone
 
 
+DIRECTORY = 'gallery657'
+
+
 def unique_file_name(instance, filename):
     # Prepends unique epoch timestamp on image filename
-    directory = 'gallery657'
     epoch_time = int(time())
-    path = u"{}/{}-{}".format(directory, epoch_time, filename)
+    path = u'{}/{}-{}'.format(DIRECTORY, epoch_time, filename)
     return path
 
 # TODO: Implement this.
@@ -61,7 +63,9 @@ class Art(models.Model):
     file_type = models.CharField(max_length=25,
                                  blank=True,
                                  null=True)
-    thumb_nail = models.FileField(blank=True, null=True)
+    thumb_nail = models.FileField(blank=True, null=True,
+                                  upload_to=DIRECTORY,
+                                  validators=[validate_file_type])
     pub_date = models.DateTimeField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
 
@@ -78,27 +82,32 @@ class Art(models.Model):
         super(Art, self).save()
         # Then we try to optimize
         try:
+            image_file = self.media_file
             file_type = magic.from_buffer(
                 self.media_file.file.read(),
                 mime=True)
-            image_file = self.media_file
+            if not (file_type in image_types):
+                return
+            self.file_type = file_type
             image = Image.open(image_file)
             ftype = image.format
-            if image.mode not in ('L', 'RGBA'):
-                image = image.convert('RGBA')
+            """
+            Hmmm.. what should we do about this ?
+            if image_copy.mode not in ('L', 'RGBA'):
+                image_copy = image_copy.convert('RGBA')
+            """
             picture_name, picture_extension = os.path.splitext(
                 self.media_file.name)
             picture_extension = picture_extension.lower()
-            picture_filename = picture_name + '_picture' + picture_extension
-            image_copy = image.copy()
-            image_copy.thumbnail((600, 600))
-            image_file = StringIO.StringIO()
-            image_copy.save(image_file, ftype, quality=90)
-            image_file.seek(0)
-            suf = SimpleUploadedFile(picture_filename,
-                                     image_file.read(),
+            thumb_filename = picture_name + '_thumb' + picture_extension
+            image.thumbnail((600, 600), Image.ANTIALIAS)
+            thumb_file = StringIO.StringIO()
+            image.save(thumb_file, ftype, quality=90)
+            thumb_file.seek(0)
+            suf = SimpleUploadedFile(thumb_filename,
+                                     thumb_file.read(),
                                      content_type=file_type)
-            self.media_file.save(suf.name, suf, save=False)
+            self.thumb_nail.save(suf.name, suf, save=False)
             super(Art, self).save()
-        except (IOError, ValueError, AttributeError):
+        except (IOError, ValueError, AttributeError, ValidationError):
             pass  # We should probably log this.
