@@ -3,18 +3,23 @@
 A small picture gallery VueJs app with Django backend.
 
 ### Installation ###
+  
+* Django
 
-* Configuration
-
+  Run: pip install -r require.txt
+  
   Add 'gallery657' to the INSTALLED_APPS setting.
   
-* Dependencies
-  
-  Django REST Framework
-
 * Database configuration
 
   Run: python manage.py migrate gallery657
+  
+* VueJS app building
+  
+  Run: sudo apt-get install nodejs-legacy
+  
+  In the vue_app directory run: npm run build
+  
 
 
 #### Live example ####

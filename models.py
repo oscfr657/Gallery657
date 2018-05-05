@@ -109,5 +109,5 @@ class Art(models.Model):
                                      content_type=file_type)
             self.thumb_nail.save(suf.name, suf, save=False)
             super(Art, self).save()
-        except (IOError, ValueError, AttributeError, ValidationError):
+        except (IOError, ValueError, AttributeError):
             pass  # We should probably log this.

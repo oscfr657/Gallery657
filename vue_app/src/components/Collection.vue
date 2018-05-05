@@ -10,7 +10,8 @@
     <div id="collection_view">
 
     <div v-for="art in collection" class="art_item">
-    <img :src="art.media_file" :alt="art.title"/>
+    <img v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
+    <img v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
     </div>
 
     </div>
