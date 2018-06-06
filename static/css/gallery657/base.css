@@ -1,62 +1,95 @@
 
 #gallery {
-position: absolute;
-top: 0px;
-left: 15%;
-right: 15%;
-bottom: 0px;
-color:#aa0909;
-text-align:center;
-font-size: 40px;
-text-decoration: none;
-padding: 1px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
-#collection_list {
-  float:left;
-  width: 200px;
+.collection_list {
+  position: absolute;
+  min-width: 200px;
+  color:#aa0909;
+  text-align:center;
+  vertical-align: middle;
 }
-
-#collection_list button {
+.collection_list ul li {
+  display: block;
+}
+.collection_list button {
   color: #aa0909;
   background-color: white;
   border: solid 1px #aa0909;
   box-shadow: 3px 3px 3px red;
+  margin-bottom: 16px;
 }
-
-#collection_list button:hover {
+.collection_list button:hover {
   color:red;
   border: solid 1px red;
   box-shadow: 3px 3px 3px red;
   cursor:pointer;
 }
-
-#collection_list button:active {
+.collection_list button:active {
   color:red;
   border: solid 1px red;
   box-shadow: None;
 }
-
-#collection_list .router-link-active button {
+.collection_list .router-link-active button {
   color:red;
   border: solid 1px red;
   box-shadow: None;
-
+  cursor: default;
 }
 
-#collection_view {
-  float:left;
+.collection_view {
+  left: 200px;
+  right: 0px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
-
 
 .art_item {
   float:left;
-  max-width: 300px;
   margin: 10px;
+  margin-top: 16px;
+}
+.art_item img {
+  max-height:200px;
+}
+.art_item img:hover {
+  cursor: pointer;
 }
 
+.art-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-#gallery img {
+.art {
+  background: #ffffff;
+  box-shadow: 2px 2px 20px 1px;
+  color: #ff0000;
+}
+
+.art img {
   vertical-align: middle;
-  max-height:250px;
+  max-width: 700px;
+}
+
+.art-fade-enter,
+.art-fade-leave-active {
+  opacity: 0;
+}
+
+.art-fade-enter-active,
+.art-fade-leave-active {
+  transition: opacity .5s ease
 }

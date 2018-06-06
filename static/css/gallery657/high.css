@@ -1,25 +1,26 @@
 
-#gallery {
-left: 0px;
-right: 0px;
-font-size: 30px;
+.collection_list {
+  top: 0px;
+  height: 50px;
 }
 
-#collection_list {
-  width: 150px;
+.collection_list ul li {
+  display: inline;
+  margin-right: 20px;
 }
 
-#collection_view {
-  overflow-x: scroll;
+.collection_view {
+  padding-top: 50px;
+  padding-left: 0px;
 }
 
 .art_item {
-max-width: 300px;
-margin: 10px;
+  margin: 10px;
+  margin-top: 0px;
 }
 
-
-#gallery img {
-vertical-align: middle;
-max-height: 200px;
+.art_item img {
+  vertical-align: middle;
+  max-height: 200px;
+  max-width: 500px;
 }

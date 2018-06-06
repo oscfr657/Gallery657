@@ -1,11 +1,7 @@
 
-#gallery {
-left: 5%;
-right: 5%;
-font-size: 30px;
-}
 
-
-#gallery img {
-max-height: 200px;
-}
+.collection_view {
+    padding-left: 200px;
+    padding-right: 0px;
+  }
+  

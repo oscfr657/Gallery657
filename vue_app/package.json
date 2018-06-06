@@ -21,8 +21,7 @@
     "cross-env": "^4.0.0",
     "webpack": "^2.6.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "main": "webpack.config.js",
   "keywords": [],
   "license": "ISC"

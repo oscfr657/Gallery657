@@ -1,56 +1,74 @@
 
 <template>
   <div >
-    <div v-if="loading" >
+    <div v-if="loading" class="collection_view">
     Loading...
     </div>
-    <div v-if="error" >
+    <div v-if="error" class="collection_view">
       {{ error }}
     </div>
-    <div id="collection_view">
-
-    <div v-for="art in collection" class="art_item">
-    <img v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
-    <img v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
+    <div class="collection_view">
+      <div v-for="art in collection" :key="art.pk" class="art_item">
+        <img @click="showArt(art.pk)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
+        <img @click="showArt(art.pk)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
+      </div>
     </div>
 
-    </div>
+    <art
+      v-show="isArt"
+      @close="closeArt"
+      :artpk="artpk"
+    />
   </div>
 </template>
 
-
 <script>
-
+import art from "./Art.vue";
 export default {
-  name: 'collection',
-  data () {
+  name: "collection",
+  components: {
+    art
+  },
+  data() {
     return {
       loading: false,
       error: null,
       collection: [],
-      number: 0
-    }
+      isArt: false,
+      artpk: 0
+    };
   },
-  created () {
-    this.fetchData()
+  created() {
+    this.fetchData();
   },
   watch: {
-    '$route': 'fetchData'
+    $route: "fetchData"
   },
   methods: {
-    fetchData () {
-      this.error = null
-      this.loading = true
+    showArt(art_pk) {
+      this.artpk = art_pk;
+      this.isArt = true;
+    },
+    closeArt() {
+      this.isArt = false;
+    },
+    fetchData() {
+      this.error = null;
+      this.loading = true;
       if (this.$route.params.number) {
-        this.number = this.$route.params.number
-        this.$http.get('/gallery/api/art/?collection='+this.number).then(response => {
-          this.loading = false
-          this.collection = response.body
-          }, response => {
-            console.log('Collection error');
-          });
+        this.$http
+          .get("/gallery/api/art/?collection=" + this.$route.params.number)
+          .then(
+            response => {
+              this.loading = false;
+              this.collection = response.body;
+            },
+            response => {
+              console.log("Collection error");
+            }
+          );
       }
     }
   }
-}
+};
 </script>

@@ -10,10 +10,10 @@ Vue.use(VueRouter)
 
 
 const router = new VueRouter({
-    //mode: 'history',
-    base: '/gallery/',
-    routes
-    })
+  //mode: 'history',
+  base: '/gallery/',
+  routes
+})
 
 new Vue({
   el: '#gallery',
