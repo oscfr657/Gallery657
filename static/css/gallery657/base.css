@@ -62,7 +62,7 @@
 }
 
 .art-backdrop {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -74,6 +74,8 @@
 }
 
 .art {
+  position: absolute;
+  top: 1em;
   background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
   color: #ff0000;
