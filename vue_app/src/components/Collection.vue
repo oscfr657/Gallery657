@@ -4,7 +4,7 @@
     <div v-if="loading" class="collection_view">
     Loading...
     </div>
-    <div v-if="error" class="collection_view">
+    <div v-else-if="error" class="collection_view">
       {{ error }}
     </div>
     <div class="collection_view">

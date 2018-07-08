@@ -4,12 +4,14 @@
       <div class="art" v-if="loading_art" >
       Loading...
       </div>
-      <div class="art" v-if="art_error" >
+      <div class="art" v-else-if="art_error" >
         {{ art_error }}
       </div>
-      <div class="art" v-if="art!==null" >
+      <div class="art" v-else-if="art!==null" >
         <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
+      <!-- close bug fix in FF -->
+      close
     </div>
   </transition>
 </template>
