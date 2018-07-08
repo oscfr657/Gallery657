@@ -77,8 +77,6 @@ and preferbly put
 
 at the bottom of your index.html
 
-
-
 ## For development ##
 
 * Run: pip install pylint

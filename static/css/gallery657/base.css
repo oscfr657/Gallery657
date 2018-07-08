@@ -85,13 +85,3 @@
   vertical-align: middle;
   max-width: 700px;
 }
-
-.art-fade-enter,
-.art-fade-leave-active {
-  opacity: 0;
-}
-
-.art-fade-enter-active,
-.art-fade-leave-active {
-  transition: opacity .5s ease
-}

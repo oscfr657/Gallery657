@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-import magic
+import os
+import StringIO
 from time import time
-from django.db import models
+
+import magic
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
-import StringIO
+from django.db import models
 from PIL import Image
-import os
+
 # from django.utils import timezone
 
 
