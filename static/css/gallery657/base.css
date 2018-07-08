@@ -77,11 +77,18 @@
   position: absolute;
   top: 1em;
   background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
-  color: #ff0000;
+  box-shadow: 0px 0px 20px 5px red;
 }
 
 .art img {
   vertical-align: middle;
   max-width: 700px;
+}
+
+.art-fade-enter-active, .art-fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.art-fade-enter, .art-fade-leave-to {
+  opacity: 0;
 }

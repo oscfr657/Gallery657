@@ -7,7 +7,7 @@
       <div class="art" v-if="art_error" >
         {{ art_error }}
       </div>
-      <div class="art" v-if="art!==null">
+      <div class="art" v-if="art!==null" >
         <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
     </div>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       loading_art: false,
-      art_error: null,
+      art_error: false,
       art: null
     };
   },
@@ -37,7 +37,7 @@ export default {
       this.$emit("close");
     },
     fetchData() {
-      this.art_error = null;
+      this.art_error = false;
       this.loading_art = true;
       this.art = null;
       if (this.artpk) {

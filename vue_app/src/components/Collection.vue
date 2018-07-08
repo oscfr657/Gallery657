@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       loading: false,
-      error: null,
+      error: false,
       collection: [],
       isArt: false,
       artpk: 0
@@ -53,7 +53,7 @@ export default {
       this.isArt = false;
     },
     fetchData() {
-      this.error = null;
+      this.error = false;
       this.loading = true;
       if (this.$route.params.number) {
         this.$http
@@ -65,6 +65,7 @@ export default {
             },
             response => {
               console.log("Collection error");
+              this.error = true;
             }
           );
       }
