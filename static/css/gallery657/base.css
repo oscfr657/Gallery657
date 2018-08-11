@@ -9,13 +9,18 @@
 
 .collection_list {
   position: fixed;
-  min-width: 200px;
+  height: 50px;
+  min-width: 100%;
   color:#aa0909;
   text-align:center;
-  vertical-align: middle;
+}
+.collection_list ul {
+  padding: 0px;
 }
 .collection_list ul li {
-  display: block;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .collection_list button {
   color: #aa0909;
@@ -43,16 +48,17 @@
 }
 
 .collection_view {
-  left: 200px;
-  right: 0px;
-  padding-left: 200px;
-  padding-right: 200px;
+  position: relative;
+  top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .art_item {
-  float:left;
+  display: flex;
   margin: 10px;
-  margin-top: 16px;
 }
 .art_item img {
   max-height:200px;
