@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-import StringIO
+from io import BytesIO
 from time import time
 
 import magic
@@ -57,6 +57,7 @@ class Collection(models.Model):
 
 class Art(models.Model):
     collection = models.ForeignKey(Collection,
+                                   on_delete=models.SET_NULL,
                                    related_name="art",
                                    blank=True,
                                    null=True)
@@ -77,7 +78,12 @@ class Art(models.Model):
     def __unicode__(self):
         if self.title:
             return u'%s' % self.title
-        return ''
+        return u''
+
+    def __str__(self):
+        if self.title:
+            return u'%s' % self.title
+        return u'%s' % self.pk
 
     def save(self):
         # First doing a normal save
@@ -103,7 +109,7 @@ class Art(models.Model):
             picture_extension = picture_extension.lower()
             thumb_filename = picture_name + '_thumb' + picture_extension
             image.thumbnail((600, 600), Image.ANTIALIAS)
-            thumb_file = StringIO.StringIO()
+            thumb_file = BytesIO()
             image.save(thumb_file, ftype, quality=90)
             thumb_file.seek(0)
             suf = SimpleUploadedFile(thumb_filename,

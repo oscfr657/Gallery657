@@ -12,7 +12,9 @@
   height: 50px;
   min-width: 100%;
   color:#aa0909;
+  background-color: white;
   text-align:center;
+  z-index: 1;
 }
 .collection_list ul {
   padding: 0px;
@@ -68,14 +70,15 @@
 }
 
 .art-backdrop {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 5em;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .art {
