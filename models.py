@@ -53,6 +53,9 @@ class Collection(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.title
+    
+    def __str__(self):
+        return u'%s' % self.title
 
 
 class Art(models.Model):

@@ -1,11 +1,10 @@
 
 .collection_list {
   position: fixed;
-  top: 0px;
+  top: 70px;
   height: 50px;
   min-width: 100%;
   text-align: left;
-  background-color: white;
 }
 
 .collection_list ul li {
