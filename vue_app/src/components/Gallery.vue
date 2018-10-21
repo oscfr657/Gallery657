@@ -25,26 +25,25 @@ export default {
   data() {
     return {
       loading: false,
-      error: null,
+      error: false,
       collections: false
     };
   },
   created() {
     this.fetchData();
   },
-  watch: {
-    $route: "fetchData"
-  },
   methods: {
     fetchData() {
       this.loading = true;
       this.$http.get("/gallery/api/collection/").then(
         response => {
-          this.loading = false;
           this.collections = response.body;
+          this.loading = false;
         },
         response => {
-          console.log("error");
+          console.log("API error");
+          this.error = true;
+          this.loading = false;
         }
       );
     }

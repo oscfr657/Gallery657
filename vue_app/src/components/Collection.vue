@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      loading: false,
+      loading: true,
       error: false,
       collection: [],
       isArt: false,
@@ -64,8 +64,10 @@ export default {
               this.collection = response.body;
             },
             response => {
-              console.log("Collection error");
-              this.error = true;
+              console.log("Collection not found error");
+              console.log(response);
+              this.error = response.status +": Collection not found.";
+              this.loading = false;
             }
           );
       }

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.exceptions import NotFound
 
 from gallery657.models import Art, Collection
 from gallery657.serializers import ArtSerializer, CollectionSerializer
@@ -34,8 +35,12 @@ class ArtViewSet(ReadOnlyModelViewSet):
     def get_queryset(self):
         queryset = Art.objects.all()
         collection = self.request.query_params.get('collection', None)
-        if collection is not None:
+        try:
             queryset = queryset.filter(collection=collection)
+        except:
+            raise NotFound
+        if not queryset.exists():
+            raise NotFound
         return queryset
 
 
