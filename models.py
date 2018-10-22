@@ -9,6 +9,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import models
 from PIL import Image
 
+# TODO: Why not this ?
 # from django.utils import timezone
 
 
@@ -48,6 +49,8 @@ def validate_file_type(media_file):
 class Collection(models.Model):
     title = models.CharField(max_length=50)
 
+    objects = models.Manager()
+    
     class Meta:
         ordering = ['pk']
 
@@ -74,6 +77,8 @@ class Art(models.Model):
                                   validators=[validate_file_type])
     pub_date = models.DateTimeField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
+
+    objects = models.Manager()
 
     class Meta:
         ordering = ['pk']
