@@ -35,12 +35,11 @@ class ArtViewSet(ReadOnlyModelViewSet):
     def get_queryset(self):
         queryset = Art.objects.all()
         collection = self.request.query_params.get('collection', None)
-        try:
-            queryset = queryset.filter(collection=collection)
-        except:
-            raise NotFound
-        if not queryset.exists():
-            raise NotFound
+        if collection:
+            try:
+                queryset = queryset.filter(collection=collection)
+            except ValueError:
+                raise NotFound
         return queryset
 
 
