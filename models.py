@@ -48,11 +48,12 @@ def validate_file_type(media_file):
 
 class Collection(models.Model):
     title = models.CharField(max_length=50)
+    pub_date = models.DateTimeField(blank=True, null=True)
 
     objects = models.Manager()
     
     class Meta:
-        ordering = ['pk']
+        ordering = ['-pub_date']
 
     def __unicode__(self):
         return u'%s' % self.title
@@ -81,7 +82,7 @@ class Art(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['pk']
+        ordering = ['-pub_date']
 
     def __unicode__(self):
         if self.title:

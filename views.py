@@ -1,4 +1,8 @@
 
+from django.utils import timezone
+
+from django.db.models import Q
+
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -33,7 +37,8 @@ class ArtViewSet(ReadOnlyModelViewSet):
     pagination_class = None
 
     def get_queryset(self):
-        queryset = Art.objects.all()
+        queryset = Art.objects.filter(
+            Q(pub_date__lte=timezone.now()) | Q(pub_date=None))
         collection = self.request.query_params.get('collection', None)
         if collection:
             try:
@@ -44,6 +49,7 @@ class ArtViewSet(ReadOnlyModelViewSet):
 
 
 class CollectionViewSet(ReadOnlyModelViewSet):
-    queryset = Collection.objects.all()
+    queryset = Collection.objects.filter(
+            Q(pub_date__lte=timezone.now()) | Q(pub_date=None))
     serializer_class = CollectionSerializer
     pagination_class = None
