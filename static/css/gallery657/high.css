@@ -12,17 +12,7 @@
   margin-right: 20px;
 }
 
-.art-backdrop {
-  position: fixed;
-  top: 1em;
-  bottom: 1em;
-  left: 1em;
-  right: 1em;
-  display: block;
-}
-
 .art_item {
-  margin: 10px;
   margin-top: 0px;
 }
 
@@ -33,6 +23,5 @@
 }
 
 .art img {
-  vertical-align: middle;
   max-width: 100%;
 }

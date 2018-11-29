@@ -11,7 +11,6 @@
   position: fixed;
   height: 50px;
   min-width: 100%;
-  color:#aa0909;
   text-align:center;
   z-index: 1;
 }
@@ -24,26 +23,32 @@
   margin-right: 10px;
 }
 .collection_list button {
-  color: #aa0909;
+  color: #7891FF;
   background-color: white;
-  border: solid 1px #aa0909;
-  box-shadow: 3px 3px 3px red;
+  border: solid 1px #7891FF;
+  box-shadow: 3px 3px 3px blue;
   margin-bottom: 16px;
 }
 .collection_list button:hover {
-  color:red;
-  border: solid 1px red;
-  box-shadow: 3px 3px 3px red;
+  color:#de00ff;
+  border: solid 1px #de00ff;
+  box-shadow: 3px 3px 3px #de00ff;
   cursor:pointer;
 }
 .collection_list button:active {
-  color:red;
-  border: solid 1px red;
+  color:blue;
+  border: solid 1px blue;
   box-shadow: None;
 }
 .collection_list .router-link-active button {
-  color:red;
-  border: solid 1px red;
+  color:blue;
+  border: solid 1px blue;
+  box-shadow: None;
+  cursor: default;
+}
+.collection_list .router-link-active button:hover {
+  color:#de00ff;
+  border: solid 1px #de00ff;
   box-shadow: None;
   cursor: default;
 }
@@ -70,21 +75,24 @@
 
 .art-backdrop {
   position: fixed;
-  top: 5em;
+  top: 0em;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  vertical-align: middle;
   z-index: 2;
+  background-color: #000000cc;
 }
 
 .art {
-  position: absolute;
-  top: 1em;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px 5px red;
+  position: relative;
+  top: 0em;
+  box-shadow: 0px 0px 20px 5px #de00ff;
+  left: 1em;
+  right: 1em;
 }
 
 .art img {
