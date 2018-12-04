@@ -68,9 +68,11 @@
 }
 .art_item img {
   max-height:200px;
+  transition: all 0.75s ease;
 }
 .art_item img:hover {
   cursor: pointer;
+  transform:scale(1.25);
 }
 
 .art-backdrop {
@@ -87,17 +89,58 @@
   background-color: #000000cc;
 }
 
+.art-left {
+  position: absolute;
+  right: calc(50% + 360px);
+  color: #de00ff;
+  top: calc(50% - 0.5em);
+  border-radius: 10px;
+  font-size: 2em;
+  width: 50px;
+  text-align: center;
+}
+.art-left:hover {
+background-color: black;
+}
+
+.art-right {
+position: absolute;
+right: calc(50% - 408px);
+top: calc(50% - 0.5em);
+border-radius: 10px;
+color: #de00ff;
+font-size: 2em;
+width: 50px;
+text-align: center;
+}
+.art-right:hover {
+background-color: black;
+}
+
+.art-close {
+position: absolute;
+top: 1em;
+border-radius: 10px;
+color: #de00ff;
+font-size: 2em;
+width: 50px;
+text-align: center;
+right: calc(50% - 408px);
+}
+.art-close:hover {
+background-color: black;
+}
+
 .art {
   position: relative;
   top: 0em;
   box-shadow: 0px 0px 20px 5px #de00ff;
-  left: 1em;
-  right: 1em;
 }
 
 .art img {
   vertical-align: middle;
   max-width: 700px;
+  max-height: 600px;
 }
 
 .art-fade-enter-active, .art-fade-leave-active {
@@ -106,4 +149,25 @@
 
 .art-fade-enter, .art-fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 840px) {
+  .art {
+    top: -2em;
+  }
+  .art-left {
+    left: 25px;
+    bottom: 25px;
+    top: auto;
+  }
+  .art-right {
+    right: 25px;
+    bottom: 25px;
+    top: auto;
+  }
+  .art-close {
+    right: calc(50% - 0.5em );
+    bottom: 25px;
+    top: auto;
+  }
 }

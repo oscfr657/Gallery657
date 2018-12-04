@@ -8,16 +8,19 @@
       {{ error }}
     </div>
     <div class="collection_view">
-      <div v-for="art in collection" :key="art.pk" class="art_item">
-        <img @click="showArt(art.pk)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
-        <img @click="showArt(art.pk)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
+      <div v-for="(art, index) in collection" :key="art.pk" class="art_item">
+        <img @click="showArt(art.pk, index)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
+        <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
     </div>
 
     <art
       v-show="isArt"
       @close="closeArt"
+      @prevArt="prevArt"
+      @nextArt="nextArt"
       :artpk="artpk"
+      :index="index"
     />
   </div>
 </template>
@@ -35,7 +38,8 @@ export default {
       error: false,
       collection: [],
       isArt: false,
-      artpk: 0
+      artpk: 0,
+      index: 1
     };
   },
   created() {
@@ -45,9 +49,26 @@ export default {
     $route: "fetchData"
   },
   methods: {
-    showArt(art_pk) {
-      this.artpk = art_pk;
+    showArt(art_pk, index) {
       this.isArt = true;
+      this.artpk = art_pk;
+      this.index = index;
+    },
+    prevArt() {
+      if (this.index > 0 ) {
+        this.index = this.index - 1;
+      } else {
+        this.index = this.collection.length - 1;
+      }
+      this.artpk = this.collection[this.index].pk
+    },
+    nextArt() {
+      if (this.index < this.collection.length - 1 ) {
+        this.index = this.index + 1;
+      } else {
+        this.index = 0;
+      }
+      this.artpk = this.collection[this.index].pk
     },
     closeArt() {
       this.isArt = false;
