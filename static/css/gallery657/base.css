@@ -101,6 +101,7 @@
 }
 .art-left:hover {
 background-color: black;
+cursor: pointer;
 }
 
 .art-right {
@@ -115,6 +116,7 @@ text-align: center;
 }
 .art-right:hover {
 background-color: black;
+cursor: pointer;
 }
 
 .art-close {
@@ -129,6 +131,7 @@ right: calc(50% - 408px);
 }
 .art-close:hover {
 background-color: black;
+cursor: pointer;
 }
 
 .art {

@@ -37,8 +37,10 @@ export default {
       this.loading = true;
       this.$http.get("/gallery/api/collection/").then(
         response => {
-          this.collections = response.body;
-          this.loading = false;
+          if (response.status == '200' ) {
+            this.collections = response.body;
+            this.loading = false;
+          }
         },
         response => {
           console.log("API error");

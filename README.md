@@ -1,3 +1,4 @@
+
 # Gallery 657 #
 
 A small picture gallery app with VueJs frontend and
@@ -7,12 +8,13 @@ Django backend.
   
 ### Pip requirements ###
 
-* Run: pip install -r require.txt
+> pip install -r requirements.txt
 
 ### Django settings ###
 
-* Add 'gallery657' and 'rest_framework' to the INSTALLED_APPS setting.
-* and add the restframework settings
+Add 'gallery657' and 'rest_framework' to the INSTALLED_APPS settings
+
+Add this restframework settings
 
 ``` python
   REST_FRAMEWORK {
@@ -24,24 +26,24 @@ Django backend.
         'rest_framework.renderers.BrowsableAPIRenderer'
     )
   }
-  ```
+```
 
 ### Database configuration ###
 
-* Run: python manage.py migrate
+> python manage.py migrate
   
 ### Django url ###
 
-  To the django projects' url.py add
+To the django projects' url.py add
 
-  ``` python
-  from django.conf.urls import include
-  ```
+``` python
+from django.conf.urls import include
+```
 
-  and
+and
 
-  ``` python
-  url(r'^gallery/', include('gallery657.urls', namespace="gallery657" ),
+``` python
+url(r'^gallery/', include('gallery657.urls', namespace="gallery657" ),
 ```
 
 ### Django template ###
@@ -79,29 +81,35 @@ at the bottom of your index.html
 
 ## For development ##
 
-* Run: pip install pylint
+> pip install pylint
 
-* To the Django settings.py add
+To the Django settings.py add
 
 ``` python
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ```
 
-* To the Django project url.py add
+To the Django project url.py add
 
 ``` python
 from django.conf.urls.static import static
 ```
 
-* and after the url patterns add, inclding the plus sign in the begining
+After the url patterns add, inclding the plus sign in the begining
 
 ``` python
 + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
-* VueJS app building
+### VueJS app building ###
+
+ > sudo apt-get install npm
   
-  * Run: sudo apt-get install npm
-  
-  * In the vue_app directory run: npm run build
+ In the vue_app directory run:
+
+> npm install
+
+and
+
+> npm run build

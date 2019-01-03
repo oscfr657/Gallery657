@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.contrib import admin
 
 from gallery657.models import Art, Collection
 
 
 class ArtAdmin(admin.ModelAdmin):
-    fields = ('title', 'pub_date', 'media_file',
-              'thumb_nail', 'file_type', 'collection')
+    fields = ('collection', 'title', 'pub_date', 'media_file',
+              'thumb_nail', 'file_type')
     readonly_fields = ('file_type', 'thumb_nail')
     date_hierarchy = 'pub_date'
 
