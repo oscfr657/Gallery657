@@ -83,7 +83,7 @@ class Art(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['collection__pub_date', '-pub_date']
+        ordering = ['-collection__pub_date', '-pub_date']
 
     def __unicode__(self):
         if self.title:
