@@ -54,7 +54,7 @@ class Collection(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['pub_date']
+        ordering = ['-pub_date']
 
     def __unicode__(self):
         return u'%s' % self.title
