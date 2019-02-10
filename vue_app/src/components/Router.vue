@@ -13,6 +13,10 @@ export default {
           path: "/:number/",
           name: "collection",
           component: Collection
+        }, {
+          path: '/',
+          name: "all_art",
+          component: Collection
         }
       ]
     }

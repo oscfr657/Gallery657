@@ -22,9 +22,7 @@ class ArtInline(admin.TabularInline):
 
 class CollectionAdmin(admin.ModelAdmin):
     date_hierarchy = 'art__pub_date'
-    inlines = [
-            ArtInline,
-        ]
+    inlines = [ArtInline,]
 
 
 admin.site.register(Art, ArtAdmin)

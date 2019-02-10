@@ -55,16 +55,12 @@ remove the first line in the templates/base_gallery657.html file.
 {% extends "base.html" %}
 ```
 
-## Live example ##
-
-  www.oscfr.se/gallery
-
 ## App as component ##
 
 If you whant to use the app as a component at a bigger site you create the div
 
 ``` html
-<div id="gallery" >
+<div id="gallery657" >
   <router-view></router-view>
 </div>
 ```
@@ -78,6 +74,10 @@ and preferbly put
 ```
 
 at the bottom of your index.html
+
+## Live example ##
+
+  www.oscfr.se/gallery
 
 ## For development ##
 

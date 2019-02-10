@@ -91,6 +91,21 @@ export default {
               this.loading = false;
             }
           );
+      } else {
+        this.$http
+          .get("/gallery/api/art/")
+          .then(
+            response => {
+              this.loading = false;
+              this.collection = response.body;
+            },
+            response => {
+              console.log("No art found error");
+              console.log(response);
+              this.error = response.status +": No art found.";
+              this.loading = false;
+            }
+          );
       }
     }
   }

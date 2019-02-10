@@ -22,12 +22,13 @@ def unique_file_name(instance, filename):
     path = u'{}/{}-{}'.format(DIRECTORY, epoch_time, filename)
     return path
 
+
 # TODO: Implement this.
-video_types = ['video/mp4',
+VIDEO_TYPES = ['video/mp4',
                'video/webm',
                'video/ogg']
 
-image_types = ['image/png',
+IMAGE_TYPES = ['image/png',
                'image/jpeg',
                'image/jpg',
                'image/gif',
@@ -39,7 +40,7 @@ def validate_file_type(media_file):
         file_type = magic.from_buffer(
             media_file.file.read(),
             mime=True)
-        if not (file_type in image_types):
+        if file_type not in IMAGE_TYPES:
             raise ValidationError(
                 u'File type not supported!')
     except (IOError, ValueError, AttributeError):
@@ -51,13 +52,13 @@ class Collection(models.Model):
     pub_date = models.DateTimeField(blank=True, null=True)
 
     objects = models.Manager()
-    
+
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ['pub_date']
 
     def __unicode__(self):
         return u'%s' % self.title
-    
+
     def __str__(self):
         return u'%s' % self.title
 
@@ -82,7 +83,7 @@ class Art(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ['collection__pub_date', '-pub_date']
 
     def __unicode__(self):
         if self.title:
@@ -103,16 +104,11 @@ class Art(models.Model):
             file_type = magic.from_buffer(
                 self.media_file.file.read(),
                 mime=True)
-            if not (file_type in image_types):
+            if file_type not in IMAGE_TYPES:
                 return
             self.file_type = file_type
             image = Image.open(image_file)
             ftype = image.format
-            """
-            Hmmm.. what should we do about this ?
-            if image_copy.mode not in ('L', 'RGBA'):
-                image_copy = image_copy.convert('RGBA')
-            """
             picture_name, picture_extension = os.path.splitext(
                 self.media_file.name)
             picture_extension = picture_extension.lower()

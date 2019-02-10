@@ -16,6 +16,6 @@ const router = new VueRouter({
 })
 
 new Vue({
-  el: '#gallery',
+  el: '#gallery657',
   router
 });

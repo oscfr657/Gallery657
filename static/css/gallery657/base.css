@@ -1,5 +1,5 @@
 
-#gallery {
+#gallery657 {
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -21,6 +21,7 @@
   display: inline;
   margin-left: 10px;
   margin-right: 10px;
+  color: blue;
 }
 .collection_list button {
   color: #7891FF;
@@ -35,18 +36,13 @@
   box-shadow: 3px 3px 3px #de00ff;
   cursor:pointer;
 }
-.collection_list button:active {
-  color:blue;
-  border: solid 1px blue;
-  box-shadow: None;
-}
-.collection_list .router-link-active button {
+.collection_list .router-link-exact-active button {
   color:blue;
   border: solid 1px blue;
   box-shadow: None;
   cursor: default;
 }
-.collection_list .router-link-active button:hover {
+.collection_list .router-link-exact-active button:hover {
   color:#de00ff;
   border: solid 1px #de00ff;
   box-shadow: None;

@@ -10,6 +10,7 @@
 .collection_list ul li {
   display: inline;
   margin-right: 20px;
+  color: blue;
 }
 
 .art_item {
