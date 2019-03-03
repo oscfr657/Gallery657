@@ -1,13 +1,15 @@
 
 .collection_list {
   position: fixed;
-  height: 50px;
+  height: 2rem;
   min-width: 100%;
   text-align:center;
+  background-color: white;
   z-index: 1;
 }
 .collection_list ul {
   padding: 0px;
+  margin: 0;
 }
 .collection_list ul li {
   display: inline;
