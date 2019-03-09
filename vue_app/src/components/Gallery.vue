@@ -8,9 +8,6 @@
     </div>
     <div class="collection_list" v-if="collections">
       <ul>
-        <router-link tag="li" :to="{ name: 'all_art' }">
-          <button class="everything" >Everything</button>
-        </router-link>
         <router-link v-for="collection in collections" tag="li" :key="collection.pk" :to="{ name: 'collection', params: { number:collection.pk } }">
           <button >{{ collection.title| capitalize }}</button>
         </router-link>

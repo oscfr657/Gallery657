@@ -4,10 +4,16 @@ from io import BytesIO
 from time import time
 
 import magic
+from PIL import Image
+
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
+try:
+    from django.core.urlresolvers import reverse
+except  ImportError:
+    from django.urls import reverse
+
 from django.db import models
-from PIL import Image
 
 # TODO: Why not this ?
 # from django.utils import timezone
@@ -61,6 +67,9 @@ class Collection(models.Model):
 
     def __str__(self):
         return u'%s' % self.title
+
+    def get_absolute_url(self):
+        return reverse('gallery657:gallery') + str(self.pk)
 
 
 class Art(models.Model):
