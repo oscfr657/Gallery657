@@ -43,15 +43,12 @@ from gallery657.sitemap import GallerySitemap
 
 ``` python
 SITEMAPS = {
-    ...
     'gallery': GallerySitemap,
-    ...
 }
 ```
 
 ``` python
     url(r'^gallery/', include('gallery657.urls', namespace="gallery657" ),
-    ...
     url(r'^sitemap\.xml$', sitemaps_views.index, {'sitemaps': SITEMAPS}),
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemaps_views.sitemap, {'sitemaps': SITEMAPS},
         name='django.contrib.sitemaps.views.sitemap'),
