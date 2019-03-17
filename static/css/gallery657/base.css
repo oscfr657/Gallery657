@@ -27,17 +27,16 @@
   margin-left: 5px;
   padding: 5px 20px;
   background-color: white;
+  color: black;
   border: solid 1px black;
   text-decoration: none;
 }
 .collection_list ul li a:hover,
-.collection_list .router-link-exact-active {
+.collection_list .router-link-exact-active,
+.collection_list .router-link-exact-active:hover {
   color:white;
   background-color: black;
   cursor: pointer;
-}
-.collection_list .router-link-exact-active:hover {
-  cursor:pointer;
 }
 
 .collection_view {
