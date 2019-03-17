@@ -8,9 +8,11 @@
     </div>
     <div class="collection_list" v-if="collections">
       <ul>
-        <router-link v-for="collection in collections" tag="li" :key="collection.pk" :to="{ name: 'collection', params: { number:collection.pk } }">
-          <button >{{ collection.title| capitalize }}</button>
-        </router-link>
+        <li v-for="collection in collections" :key="collection.pk">
+          <router-link :to="{ name: 'collection', params: { number:collection.pk } }">
+            {{ collection.title| capitalize }}
+          </router-link>
+        </li>
       <ul>
     </div>
     <div >

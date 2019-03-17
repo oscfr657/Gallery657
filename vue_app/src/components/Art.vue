@@ -1,19 +1,19 @@
 <template>
   <transition name="art-fade">
     <div class="art-backdrop" >
-      <div class="art-close"  @click="close">
+      <div class="art-left" @click="prevArt">
+        &lt;
+      </div>
+      <div class="art-close" @click="close">
         X
+      </div>
+      <div class="art-right" @click="nextArt">
+        &gt;
       </div>
       <div class="art" v-if="art_error" >
         {{ art_error }}
       </div>
       <div v-else-if="art!==null">
-        <div class="art-left" @click="prevArt">
-          &lt;
-        </div>
-        <div class="art-right" @click="nextArt">
-          &gt;
-        </div>
         <div class="art">
           <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
         </div>

@@ -13,7 +13,6 @@
         <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
     </div>
-
     <art
       v-show="isArt"
       @close="closeArt"
