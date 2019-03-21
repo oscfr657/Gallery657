@@ -16,7 +16,7 @@
 }
 .collection_list ul {
   padding: 0px;
-  margin: 0;
+  margin: auto;
 }
 .collection_list ul li{
   display: inline;
@@ -24,7 +24,7 @@
 .collection_list ul li a {
   position: relative;
   top: 5px;
-  margin-left: 5px;
+  margin-left: 0.5rem;
   padding: 5px 20px;
   background-color: white;
   color: black;
