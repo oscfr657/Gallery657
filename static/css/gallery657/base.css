@@ -130,18 +130,22 @@ cursor: pointer;
   max-height: 600px;
 }
 
-.art-fade-enter-active, .art-fade-leave-active {
-  transition: opacity .5s ease;
+.art-fade-enter-active {
+  transition: opacity 0.5s ease;
 }
 
-.art-fade-enter, .art-fade-leave-to {
+.art-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.art-fade-enter,
+.art-fade-leave-to {
   opacity: 0;
 }
 
 @media screen and (max-width: 600px) {
   .collection_list ul li {
     display: inline;
-    margin-right: 20px;
   }
   .art_item {
     margin-top: 0px;
