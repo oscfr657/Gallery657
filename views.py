@@ -19,7 +19,6 @@ def gallery_vue(request):
 class ArtViewSet(ReadOnlyModelViewSet):
     queryset = Art.objects.all()
     serializer_class = ArtSerializer
-    pagination_class = None
 
     def get_queryset(self):
         queryset = Art.objects.filter(

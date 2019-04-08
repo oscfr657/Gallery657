@@ -1,17 +1,17 @@
 
 <template>
   <div >
-    <div v-if="loading" class="collection_view">
-    Loading...
-    </div>
-    <div v-else-if="error" class="collection_view">
-      {{ error }}
-    </div>
-    <div class="collection_view">
+    <div id="collection_view">
       <div v-for="(art, index) in collection" :key="art.pk" class="art_item">
         <img @click="showArt(art.pk, index)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
         <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
+    </div>
+    <div v-if="loading" >
+    Loading...
+    </div>
+    <div v-else-if="error">
+      {{ error }}
     </div>
     <art
       v-show="isArt"
@@ -38,10 +38,11 @@ export default {
       collection: [],
       isArt: false,
       artpk: 0,
-      index: 1
+      index: 1,
+      scroll_url: false
     };
   },
-  created() {
+  beforeMount() {
     this.fetchData();
   },
   watch: {
@@ -81,7 +82,8 @@ export default {
           .then(
             response => {
               this.loading = false;
-              this.collection = response.body;
+              this.collection = response.body.results;
+              this.scroll_url = response.body.next;
             },
             response => {
               console.log("Collection not found error");
@@ -96,7 +98,8 @@ export default {
           .then(
             response => {
               this.loading = false;
-              this.collection = response.body;
+              this.collection = response.body.results;
+              this.scroll_url = response.body.next;
             },
             response => {
               console.log("No art found error");
@@ -106,7 +109,37 @@ export default {
             }
           );
       }
-    }
+    },
+    scroll() {
+      let galleryView = document.getElementById('gallery657')
+      let scrollView = galleryView.parentElement;
+      scrollView.onscroll = () => {
+        if (this.scroll_url) {
+          let bottomOfWindow = galleryView.offsetTop + scrollView.offsetHeight === scrollView.offsetHeight;
+          if (bottomOfWindow & !this.loading) {
+            this.loading = true;
+            this.$http.get(this.scroll_url).then(
+              response => {
+                response.body.results.forEach(element => {
+                  this.collection.push(element);
+                });
+                this.scroll_url = response.body.next;
+                this.loading = false;
+              },
+              response => {
+                console.log("No art found error");
+                console.log(response);
+                this.error = response.status +": No art found.";
+                this.loading = false;
+              }
+            );
+          }
+        }
+      }
+    },
+  },
+  mounted() {
+    this.scroll();
   }
 };
 </script>

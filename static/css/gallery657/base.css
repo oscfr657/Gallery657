@@ -39,7 +39,7 @@
   cursor: pointer;
 }
 
-.collection_view {
+#collection_view {
   position: relative;
   top: 50px;
   display: flex;
