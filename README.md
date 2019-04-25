@@ -12,7 +12,22 @@ Django backend.
 
 ### Django settings ###
 
-Add 'gallery657' and 'rest_framework' to the INSTALLED_APPS settings
+Add to your settings file.
+
+``` Python
+SITE_ID = 1
+```
+
+add to the INSTALLED_APPS
+
+``` Python
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
+    'rest_framework'
+
+    'gallery657'
+```
 
 Add this restframework settings
 

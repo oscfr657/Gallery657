@@ -5,6 +5,8 @@ from django.db.models import Q
 
 from django.shortcuts import render
 
+from django.contrib.sites.shortcuts import get_current_site
+
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.exceptions import NotFound
 
@@ -22,7 +24,8 @@ class ArtViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         queryset = Art.objects.filter(
-            Q(pub_date__lte=timezone.now()) | Q(pub_date=None))
+            Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
+                collection__sites=get_current_site(self.request))
         collection = self.request.query_params.get('collection', None)
         if collection:
             try:
@@ -37,3 +40,9 @@ class CollectionViewSet(ReadOnlyModelViewSet):
         Q(pub_date__lte=timezone.now()) | Q(pub_date=None))
     serializer_class = CollectionSerializer
     pagination_class = None
+
+    def get_queryset(self):
+        queryset = Collection.objects.filter(
+            Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
+                sites=get_current_site(self.request))
+        return queryset

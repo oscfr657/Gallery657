@@ -13,6 +13,8 @@ try:
 except  ImportError:
     from django.urls import reverse
 
+from django.contrib.sites.models import Site
+
 from django.db import models
 
 # TODO: Why not this ?
@@ -54,6 +56,7 @@ def validate_file_type(media_file):
 
 
 class Collection(models.Model):
+    sites = models.ManyToManyField(Site)
     title = models.CharField(max_length=50)
     pub_date = models.DateTimeField(blank=True, null=True)
 

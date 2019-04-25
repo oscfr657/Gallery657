@@ -1,9 +1,13 @@
 
 import json
-from rest_framework import status
+
 from django.test import TestCase, Client
-from ..models import Collection
-from ..serializers import CollectionSerializer
+from django.contrib.sites.models import Site
+
+from rest_framework import status
+
+from gallery657.models import Collection
+from gallery657.serializers import CollectionSerializer
 
 CLIENT = Client()
 
@@ -12,8 +16,15 @@ class GetAllCollectionsTest(TestCase):
     """ Test module for GET all collections API """
 
     def setUp(self):
-        Collection.objects.create(title='Paintings')
-        Collection.objects.create(title='Photos')
+        site = Site.objects.get(id=1)
+        site.name = 'Test Site'
+        site.save()
+        collectiion1 = Collection.objects.create(title='Paintings')
+        collectiion1.sites.add(site)
+        collectiion1.save()
+        collectiion2 = Collection.objects.create(title='Photos')
+        collectiion2.sites.add(site)
+        collectiion2.save()
 
     def test_get_all_collections(self):
         response = CLIENT.get('/gallery/api/collection/')
@@ -27,7 +38,12 @@ class GetSingleCollectionTest(TestCase):
     """ Test module for GET single collection API """
 
     def setUp(self):
+        site = Site.objects.get(id=1)
+        site.name = 'Test Site'
+        site.save()
         self.paintings = Collection.objects.create(title='Paintings')
+        self.paintings.sites.add(site)
+        self.paintings.save()
 
     def test_get_valid_single_collection(self):
         response = CLIENT.get('/gallery/api/collection/{0}/'.format(self.paintings.pk))

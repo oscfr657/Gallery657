@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.contrib.sites.shortcuts import get_current_site
 
 from gallery657.models import Art, Collection
 
@@ -21,8 +22,26 @@ class ArtInline(admin.TabularInline):
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    date_hierarchy = 'art__pub_date'
+    date_hierarchy = 'pub_date'
     inlines = [ArtInline,]
+    list_display = ('title', 'pub_date')
+    save_on_top = True
+
+    def get_readonly_fields(self, request, obj=None):
+        if request.user.is_superuser:
+            return []
+        return ['sites']
+
+    def get_queryset(self, request):
+        qs = super(CollectionAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(sites=get_current_site(request))
+
+    def save_related(self, request, form, formsets, change):
+        super(CollectionAdmin, self).save_related(request, form, formsets, change)
+        if not request.user.is_superuser:
+            form.instance.sites.add(get_current_site(request))
 
 
 admin.site.register(Art, ArtAdmin)
