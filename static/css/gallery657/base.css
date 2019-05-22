@@ -51,10 +51,11 @@
 .art_item {
   display: flex;
   margin: 10px;
+  overflow: hidden;
 }
 .art_item img {
   max-height:200px;
-  transition: all 0.75s ease;
+  transition: all 2s ease;
 }
 .art_item img:hover {
   cursor: pointer;
