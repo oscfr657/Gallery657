@@ -1,11 +1,5 @@
 <template>
   <div >
-    <div v-if="loading" class="collection_list" >
-    Loading...
-    </div>
-    <div v-if="error" class="collection_list" >
-      {{ error }}
-    </div>
     <div class="collection_list" v-if="collections">
       <ul>
         <li v-for="collection in collections" :key="collection.pk">
@@ -26,8 +20,6 @@ export default {
   name: "gallery657",
   data() {
     return {
-      loading: false,
-      error: false,
       collections: false
     };
   },
@@ -36,18 +28,14 @@ export default {
   },
   methods: {
     fetchData() {
-      this.loading = true;
       this.$http.get("/gallery/api/collection/").then(
         response => {
           if (response.status == '200' ) {
             this.collections = response.body;
-            this.loading = false;
           }
         },
         response => {
           console.log("API error");
-          this.error = true;
-          this.loading = false;
         }
       );
     }

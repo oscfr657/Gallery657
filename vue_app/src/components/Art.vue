@@ -8,10 +8,7 @@
         &gt;
       </div>
       <transition name="art-fade">
-        <div class="art" v-if="art_error" >
-          {{ art_error }}
-        </div>
-        <div v-else-if="art!==null">
+        <div v-if="art!==null">
           <div class="art">
             <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
           </div>
@@ -28,7 +25,6 @@ export default {
   data() {
     return {
       loading_art: false,
-      art_error: false,
       art: null
     };
   },
@@ -49,7 +45,6 @@ export default {
       this.$emit("nextArt");
     },
     fetchData() {
-      this.art_error = false;
       this.loading_art = true;
       this.art = null;
       if (this.artpk) {
@@ -60,7 +55,6 @@ export default {
           },
           response => {
             console.log("Art error");
-            this.art_error = true;
           }
         );
       }

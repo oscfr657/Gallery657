@@ -7,12 +7,6 @@
         <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
     </div>
-    <div v-if="loading" >
-    Loading...
-    </div>
-    <div v-else-if="error">
-      {{ error }}
-    </div>
     <art
       v-show="isArt"
       @close="closeArt"
@@ -34,7 +28,6 @@ export default {
   data() {
     return {
       loading: true,
-      error: false,
       collection: [],
       isArt: false,
       artpk: 0,
@@ -74,7 +67,6 @@ export default {
       this.isArt = false;
     },
     fetchData() {
-      this.error = false;
       this.loading = true;
       if (this.$route.params.number) {
         this.$http
@@ -88,7 +80,6 @@ export default {
             response => {
               console.log("Collection not found error");
               console.log(response);
-              this.error = response.status +": Collection not found.";
               this.loading = false;
             }
           );
@@ -104,7 +95,6 @@ export default {
             response => {
               console.log("No art found error");
               console.log(response);
-              this.error = response.status +": No art found.";
               this.loading = false;
             }
           );
@@ -129,7 +119,6 @@ export default {
               response => {
                 console.log("No art found error");
                 console.log(response);
-                this.error = response.status +": No art found.";
                 this.loading = false;
               }
             );
