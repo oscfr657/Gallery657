@@ -7,7 +7,7 @@
             {{ collection.title| capitalize }}
           </router-link>
         </li>
-      <ul>
+      </ul>
     </div>
     <div >
       <router-view></router-view>

@@ -127,8 +127,8 @@ cursor: pointer;
 
 .art img {
   vertical-align: middle;
-  max-width: 700px;
-  max-height: 600px;
+  width: 700px;
+  max-width: 100%;
 }
 
 .art-fade-enter-active {
@@ -155,8 +155,5 @@ cursor: pointer;
     vertical-align: middle;
     max-height: 200px;
     max-width: 500px;
-  }
-  .art img {
-    max-width: 100%;
   }
 }
