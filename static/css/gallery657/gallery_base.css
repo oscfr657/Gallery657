@@ -41,11 +41,11 @@
 
 #collection_view {
   position: relative;
-  top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  padding: 2rem 0 0 0;
 }
 
 .art_item {
@@ -70,10 +70,12 @@
   right: 0;
   z-index: 2;
   background-color: #000000aa;
+  overflow: scroll;
 }
 
 .art-left {
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   right: calc(50vw + 50px);
   color: white;
   top: 1em;
@@ -88,7 +90,8 @@ cursor: pointer;
 }
 
 .art-right {
-position: absolute;
+position: fixed;
+z-index: 1;
 left: calc(50vw + 50px);
 top: 1em;
 border-radius: 10px;
@@ -103,7 +106,8 @@ cursor: pointer;
 }
 
 .art-close {
-position: absolute;
+position: fixed;
+z-index: 1;
 top: 1em;
 border-radius: 10px;
 color: white;
@@ -127,7 +131,7 @@ cursor: pointer;
 
 .art img {
   vertical-align: middle;
-  width: 700px;
+  width: 900px;
   max-width: 100%;
 }
 
