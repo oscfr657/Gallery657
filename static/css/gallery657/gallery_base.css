@@ -74,16 +74,15 @@
 }
 
 .art-title {
-  position: relative;
+  position: fixed;
   top: 0.2em;
   z-index: 1;
   color: white;
   font-size: 1.3em;
-  text-align: center;
   border-bottom: solid 2px;
   padding: 0 1em;
-  margin: auto;
-  width: min-content;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .art-left {
@@ -136,8 +135,8 @@ cursor: pointer;
 }
 
 .art {
-  position: relative;
-  top: 3em;
+  position: absolute;
+  top: 5em;
   left: 0;
   right: 0;
   text-align: center;
