@@ -1,5 +1,8 @@
 <template>
     <div class="art-backdrop" >
+      <div v-if="art.title" class="art-title">
+        {{ art.title }}
+      </div>
       <div class="art-left" @click="prevArt">
         &lt;
       </div>
@@ -8,10 +11,8 @@
         &gt;
       </div>
       <transition name="art-fade">
-        <div v-if="art!==null">
-          <div class="art">
-            <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
-          </div>
+        <div v-if="art!==null" class="art">
+          <img v-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
         </div>
       </transition>
     </div>
