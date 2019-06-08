@@ -95,7 +95,7 @@ class Art(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['-collection__pub_date', '-pub_date']
+        ordering = ['-pub_date']
 
     def __unicode__(self):
         if self.title:
@@ -112,27 +112,45 @@ class Art(models.Model):
         super(Art, self).save()
         # Then we try to optimize
         try:
-            image_file = self.media_file
+            media_file = self.media_file
             file_type = magic.from_buffer(
-                self.media_file.file.read(),
+                media_file.file.read(),
                 mime=True)
-            if file_type not in IMAGE_TYPES:
-                return
             self.file_type = file_type
-            image = Image.open(image_file)
-            ftype = image.format
-            picture_name, picture_extension = os.path.splitext(
-                self.media_file.name)
-            picture_extension = picture_extension.lower()
-            thumb_filename = picture_name + '_thumb' + picture_extension
-            image.thumbnail((600, 600), Image.ANTIALIAS)
-            thumb_file = BytesIO()
-            image.save(thumb_file, ftype, quality=90)
-            thumb_file.seek(0)
-            suf = SimpleUploadedFile(thumb_filename,
-                                     thumb_file.read(),
-                                     content_type=file_type)
-            self.thumb_nail.save(suf.name, suf, save=False)
+            if file_type in IMAGE_TYPES:
+                image = Image.open(media_file)
+                ftype = image.format
+                picture_name, picture_extension = os.path.splitext(
+                    media_file.name)
+                picture_extension = picture_extension.lower()
+                thumb_filename = picture_name + '_thumb' + picture_extension
+                image.thumbnail((600, 600), Image.ANTIALIAS)
+                try:  # Handle orientation
+                    image_exif = image._getexif()
+                    image_orientation = image_exif[274]
+                    if image_orientation in (2,'2'):
+                        image = image.transpose(Image.FLIP_LEFT_RIGHT)
+                    elif image_orientation in (3,'3'):
+                        image = image.transpose(Image.ROTATE_180)
+                    elif image_orientation in (4,'4'):
+                        image = image.transpose(Image.FLIP_TOP_BOTTOM)
+                    elif image_orientation in (5,'5'):
+                        image = image.transpose(Image.ROTATE_90).transpose(Image.FLIP_TOP_BOTTOM)
+                    elif image_orientation in (6,'6'):
+                        image = image.transpose(Image.ROTATE_270)
+                    elif image_orientation in (7,'7'):
+                        image = image.transpose(Image.ROTATE_270).transpose(Image.FLIP_TOP_BOTTOM)
+                    elif image_orientation in (8,'8'):
+                        image = image.transpose(Image.ROTATE_90)
+                except (KeyError, AttributeError, TypeError, IndexError):
+                    pass  # We should probably handle and or log this.
+                thumb_file = BytesIO()
+                image.save(thumb_file, ftype, quality=90)
+                thumb_file.seek(0)
+                suf = SimpleUploadedFile(thumb_filename,
+                                        thumb_file.read(),
+                                        content_type=file_type)
+                self.thumb_nail.save(suf.name, suf, save=False)
             super(Art, self).save()
         except (IOError, ValueError, AttributeError):
-            pass  # We should probably log this.
+            pass  # We should probably handle and or log this.

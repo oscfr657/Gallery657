@@ -4,6 +4,10 @@
   margin: auto;
 }
 
+#gallery657 img {
+  image-orientation: from-image;
+}
+
 .collection_list {
   position: fixed;
   height: 2em;
@@ -81,7 +85,7 @@
 
 .art-title {
   position: fixed;
-  top: 0.5em;
+  top: 0.4em;
   z-index: 1;
   color: white;
   font-size: 1.3em;
@@ -150,9 +154,10 @@ cursor: pointer;
 }
 
 .art img {
-  vertical-align: middle;
-  width: 900px;
+  /*vertical-align: middle;
+  width: 900px;*/
   max-width: 100%;
+  max-height: 900px;
 }
 
 .art-fade-enter-active {

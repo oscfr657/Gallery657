@@ -11,6 +11,7 @@ class ArtAdmin(admin.ModelAdmin):
     fields = ('collection', 'title', 'pub_date', 'media_file',
               'thumb_nail', 'file_type')
     readonly_fields = ('file_type', 'thumb_nail')
+    list_display = ('title', 'pub_date', 'file_type', 'collection')
     date_hierarchy = 'pub_date'
 
 
