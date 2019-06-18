@@ -1,13 +1,16 @@
 <template>
   <div >
-    <div class="collection_list" v-if="collections">
-      <ul>
-        <li v-for="collection in collections" :key="collection.pk">
-          <router-link :to="{ name: 'collection', params: { number:collection.pk } }">
-            {{ collection.title| capitalize }}
-          </router-link>
-        </li>
-      </ul>
+    <div class="collections_wrap">
+      <div class="collections" v-if="collections">
+        <button >Collections</button>
+        <div class="collection_list">
+            <router-link 
+                v-for="collection in collections" :key="collection.pk" 
+                :to="{ name: 'collection', params: { number:collection.pk } }">
+              {{ collection.title| capitalize }}
+            </router-link>
+        </div>
+      </div>
     </div>
     <div >
       <router-view></router-view>
