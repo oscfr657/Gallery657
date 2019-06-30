@@ -18,8 +18,8 @@
 .collections {
   margin: auto;
   max-width: 100%;
-  width: 599px;
-  padding: 0 0 10px 0;
+  width: 118px;
+  padding: 0;
   cursor: pointer;
 }
 .collections > button {
