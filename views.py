@@ -25,7 +25,10 @@ class ArtViewSet(ReadOnlyModelViewSet):
     def get_queryset(self):
         queryset = Art.objects.filter(
             Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
-                collection__sites=get_current_site(self.request))
+                collection__sites=get_current_site(self.request)).filter(
+                    Q(collection__pub_date__lte=timezone.now()) | Q(
+                        collection__pub_date__isnull=False)
+                )
         collection = self.request.query_params.get('collection', None)
         if collection:
             try:
@@ -43,6 +46,6 @@ class CollectionViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         queryset = Collection.objects.filter(
-            Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
+            Q(pub_date__lte=timezone.now()) | Q(pub_date__isnull=False)).filter(
                 sites=get_current_site(self.request))
         return queryset
