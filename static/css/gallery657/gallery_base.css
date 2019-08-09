@@ -7,7 +7,7 @@
 #gallery657 img {
   image-orientation: from-image;
 }
-.collections_wrap {
+#gallery657 .collections_wrap {
   position: fixed;
   text-align:center;
   background-color: white;
@@ -15,21 +15,21 @@
   left: 0;
   right: 0;
 }
-.collections {
+#gallery657 .collections {
   margin: auto;
   max-width: 100%;
   width: 118px;
   padding: 0;
   cursor: pointer;
 }
-.collections > button {
+#gallery657 .collections > button {
   background-color: rgb(0, 0, 0);
   color: white;
   padding: 0.5em 1.5em;
   border: none;
   cursor: pointer;
 }
-.collection_list {
+#gallery657 .collection_list {
   display: none;
   position: absolute;
   background-color: white;
@@ -41,7 +41,7 @@
   right: 0;
   margin: auto;
 }
-.collection_list a {
+#gallery657 .collection_list a {
   display: block;
   background-color: white;
   color: black;
@@ -50,21 +50,21 @@
   margin: 1rem 3rem;
   border: solid 1px black;
 }
-.collection_list a:hover {
+#gallery657 .collection_list a:hover {
   background-color: black;
   color: white;
 }
-.collections:hover .collection_list {
+#gallery657 .collections:hover .collection_list {
   display: block;
 }
-.collection_list .router-link-exact-active,
-.collection_list .router-link-exact-active:hover {
+#gallery657 .collection_list .router-link-exact-active,
+#gallery657 .collection_list .router-link-exact-active:hover {
   color:white;
   background-color: black;
 }
 
 
-#collection_view {
+#gallery657 #collection_view {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -73,21 +73,21 @@
   padding: 2.7rem 0 0 0;
 }
 
-.art_item {
+#gallery657 .art_item {
   display: flex;
   margin: 10px;
   overflow: hidden;
 }
-.art_item img {
+#gallery657 .art_item img {
   max-height:200px;
   transition: all 2s ease;
 }
-.art_item img:hover {
+#gallery657 .art_item img:hover {
   cursor: pointer;
   transform:scale(1.25);
 }
 
-.art-backdrop {
+#gallery657 .art-backdrop {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -97,11 +97,11 @@
   background-color: #000000aa;
   overflow: scroll;
 }
-.art-backdrop div:not(.art) {
+#gallery657 .art-backdrop div:not(.art) {
   background: #5c5c5c3b;
 }
 
-.art-title {
+#gallery657 .art-title {
   position: fixed;
   top: 0.4em;
   z-index: 1;
@@ -114,7 +114,7 @@
   min-width: max-content;
 }
 
-.art-left {
+#gallery657 .art-left {
   position: fixed;
   z-index: 1;
   right: calc(50vw + 30px);
@@ -126,12 +126,12 @@
   width: 50px;
   text-align: center;
 }
-.art-backdrop div.art-left:hover {
+#gallery657 .art-backdrop div.art-left:hover {
 background-color: black;
 cursor: pointer;
 }
 
-.art-right {
+#gallery657 .art-right {
 position: fixed;
 z-index: 1;
 left: calc(50vw + 30px);
@@ -142,12 +142,12 @@ font-size: 2em;
 width: 50px;
 text-align: center;
 }
-.art-backdrop div.art-right:hover {
+#gallery657 .art-backdrop div.art-right:hover {
 background-color: black;
 cursor: pointer;
 }
 
-.art-close {
+#gallery657 .art-close {
 position: fixed;
 z-index: 1;
 top: 1em;
@@ -158,12 +158,12 @@ width: 50px;
 text-align: center;
 right: calc(50vw - 25px);
 }
-.art-backdrop div.art-close:hover {
+#gallery657 .art-backdrop div.art-close:hover {
 background-color: black;
 cursor: pointer;
 }
 
-.art {
+#gallery657 .art {
   position: absolute;
   top: 5em;
   left: 0;
@@ -171,34 +171,34 @@ cursor: pointer;
   text-align: center;
 }
 
-.art img {
+#gallery657 .art img {
   /*vertical-align: middle;
   width: 900px;*/
   max-width: 100%;
   max-height: 800px;
 }
 
-.art-fade-enter-active {
+#gallery657 .art-fade-enter-active {
   transition: opacity 0.5s ease;
 }
 
-.art-fade-leave-active {
+#gallery657 .art-fade-leave-active {
   transition: opacity 0.5s ease;
 }
 
-.art-fade-enter,
-.art-fade-leave-to {
+#gallery657 .art-fade-enter,
+#gallery657 .art-fade-leave-to {
   opacity: 0;
 }
 
 @media screen and (max-width: 600px) {
-  .collection_list ul li {
+  #gallery657 .collection_list ul li {
     display: inline;
   }
-  .art_item {
+  #gallery657 .art_item {
     margin-top: 0px;
   }
-  .art_item img {
+  #gallery657 .art_item img {
     vertical-align: middle;
     max-height: 200px;
     max-width: 500px;

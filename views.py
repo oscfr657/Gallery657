@@ -39,8 +39,7 @@ class ArtViewSet(ReadOnlyModelViewSet):
 
 
 class CollectionViewSet(ReadOnlyModelViewSet):
-    queryset = Collection.objects.filter(
-        Q(pub_date__lte=timezone.now()) | Q(pub_date=None))
+    queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
     pagination_class = None
 
