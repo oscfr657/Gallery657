@@ -1,12 +1,13 @@
 
 <template>
-  <div >
     <div id="collection_view">
       <div v-for="(art, index) in collection" :key="art.pk" class="art_item">
         <img @click="showArt(art.pk, index)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
         <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
       </div>
-    </div>
+      <div class="collection_more">
+        <button v-if="this.scroll_url!==null" v-on:click="more()">+</button>
+      </div>
     <art
       v-show="isArt"
       @close="closeArt"
@@ -15,7 +16,7 @@
       :artpk="artpk"
       :index="index"
     />
-  </div>
+    </div>
 </template>
 
 <script>
@@ -101,31 +102,33 @@ export default {
       }
     },
     scroll() {
-      let galleryView = document.getElementById('gallery657')
-      let scrollView = galleryView.parentElement;
-      scrollView.onscroll = () => {
-        if (this.scroll_url) {
-          let bottomOfWindow = galleryView.offsetTop + scrollView.offsetHeight === scrollView.offsetHeight;
-          if (bottomOfWindow & !this.loading) {
-            this.loading = true;
-            this.$http.get(this.scroll_url).then(
-              response => {
-                response.body.results.forEach(element => {
-                  this.collection.push(element);
-                });
-                this.scroll_url = response.body.next;
-                this.loading = false;
-              },
-              response => {
-                console.log("No art found error");
-                console.log(response);
-                this.loading = false;
-              }
-            );
-          }
-        }
-      }
+      let gallery657 = document.getElementById('gallery657');
+      let collections_wrap = gallery657.firstChild;
+      collections_wrap.onscroll = function() {
+        console.log('collections_wrap 234');
+      };
+      let collection_view = document.getElementById('collection_view');
+      collection_view.onscroll = function() {
+        console.log('collection_view 234');
+      };
     },
+
+    more() {
+      this.$http.get(this.scroll_url).then(
+        response => {
+          response.body.results.forEach(element => {
+            this.collection.push(element);
+          });
+          this.scroll_url = response.body.next;
+          this.loading = false;
+        },
+        response => {
+          console.log("No art found error");
+          console.log(response);
+          this.loading = false;
+        }
+      );
+    }
   },
   mounted() {
     this.scroll();

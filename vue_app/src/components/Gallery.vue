@@ -1,8 +1,7 @@
 <template>
-  <div >
     <div class="collections_wrap">
       <div class="collections" v-if="collections">
-        <button >Collections</button>
+        <router-link :to="{ name: 'all_art'}" class="collections_button" >Collections</router-link>
         <div class="collection_list">
             <router-link 
                 v-for="collection in collections" :key="collection.pk" 
@@ -11,10 +10,7 @@
             </router-link>
         </div>
       </div>
-    </div>
-    <div >
       <router-view></router-view>
-    </div>
   </div>
 </template>
 

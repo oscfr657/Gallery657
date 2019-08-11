@@ -1,6 +1,8 @@
 
 import json
 
+from django.utils import timezone
+
 from django.test import TestCase, Client
 from django.contrib.sites.models import Site
 
@@ -19,10 +21,15 @@ class GetAllCollectionsTest(TestCase):
         site = Site.objects.get(id=1)
         site.name = 'Test Site'
         site.save()
-        collectiion1 = Collection.objects.create(title='Paintings')
+        now = timezone.now()
+        collectiion1 = Collection.objects.create(
+            title='Paintings',
+            pub_date=now)
         collectiion1.sites.add(site)
         collectiion1.save()
-        collectiion2 = Collection.objects.create(title='Photos')
+        collectiion2 = Collection.objects.create(
+            title='Photos',
+            pub_date=now)
         collectiion2.sites.add(site)
         collectiion2.save()
 
@@ -41,7 +48,10 @@ class GetSingleCollectionTest(TestCase):
         site = Site.objects.get(id=1)
         site.name = 'Test Site'
         site.save()
-        self.paintings = Collection.objects.create(title='Paintings')
+        now = timezone.now()
+        self.paintings = Collection.objects.create(
+            title='Paintings',
+            pub_date=now)
         self.paintings.sites.add(site)
         self.paintings.save()
 

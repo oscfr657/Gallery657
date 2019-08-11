@@ -53,34 +53,15 @@ To the django projects' url.py add
 
 ``` python
 from django.conf.urls import include
-from gallery657.sitemap import GallerySitemap
-```
-
-``` python
-SITEMAPS = {
-    'gallery': GallerySitemap,
-}
 ```
 
 ``` python
     url(r'^gallery/', include('gallery657.urls', namespace="gallery657" ),
-    url(r'^sitemap\.xml$', sitemaps_views.index, {'sitemaps': SITEMAPS}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', sitemaps_views.sitemap, {'sitemaps': SITEMAPS},
-        name='django.contrib.sitemaps.views.sitemap'),
-```
-
-### Django template ###
-
-Unless you'r using a base.html for your site,
-remove the first line in the templates/base_gallery657.html file.
-
-``` html
-{% extends "base.html" %}
 ```
 
 ## App as component ##
 
-If you whant to use the app as a component at a bigger site you create the div
+If you whant to use the app as a component at a bigger site you create the div  
 
 ``` html
 <div id="gallery657" >
@@ -88,12 +69,12 @@ If you whant to use the app as a component at a bigger site you create the div
 </div>
 ```
 
- where you whant the gallery to apear.
+where you whant the gallery to apear.
 
 and preferbly put
 
 ``` html
-<script src="{% static 'js/gallery657/dist/build.js' %}"></script>
+<script src="static/js/gallery657/dist/build.js"></script>
 ```
 
 at the bottom of your index.html

@@ -7,6 +7,7 @@ export default {
   routes: [
     {
       path: "/",
+      name: "collection_root",
       component: Gallery,
       children: [
         {
