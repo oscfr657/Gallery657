@@ -49,7 +49,7 @@ export default {
       this.loading_art = true;
       this.art = null;
       if (this.artpk) {
-        this.$http.get("/gallery/api/art/" + this.artpk).then(
+        this.$http.get("/gallery657/api/art/" + this.artpk).then(
           response => {
             this.loading_art = false;
             this.art = response.body;

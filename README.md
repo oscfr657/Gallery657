@@ -56,7 +56,7 @@ from django.conf.urls import include
 ```
 
 ``` python
-    url(r'^gallery/', include('gallery657.urls', namespace="gallery657" ),
+    url(r'^gallery657/', include('gallery657.urls', namespace="gallery657" ),
 ```
 
 ## App as component ##
@@ -103,7 +103,9 @@ from django.conf.urls.static import static
 After the url patterns add, inclding the plus sign in the begining
 
 ``` python
-+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
 ### VueJS app building ###

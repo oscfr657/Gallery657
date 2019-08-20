@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     fetchData() {
-      this.$http.get("/gallery/api/collection/").then(
+      this.$http.get("/gallery657/api/collection/").then(
         response => {
           if (response.status == '200' ) {
             this.collections = response.body;

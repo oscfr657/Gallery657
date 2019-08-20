@@ -100,7 +100,7 @@ class Art(models.Model):
     def __unicode__(self):
         if self.title:
             return u'%s' % self.title
-        return u''
+        return u'%s' % self.pk
 
     def __str__(self):
         if self.title:

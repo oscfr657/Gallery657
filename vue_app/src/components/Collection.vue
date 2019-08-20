@@ -71,7 +71,7 @@ export default {
       this.loading = true;
       if (this.$route.params.number) {
         this.$http
-          .get("/gallery/api/art/?collection=" + this.$route.params.number)
+          .get("/gallery657/api/art/?collection=" + this.$route.params.number)
           .then(
             response => {
               this.loading = false;
@@ -86,7 +86,7 @@ export default {
           );
       } else {
         this.$http
-          .get("/gallery/api/art/")
+          .get("/gallery657/api/art/")
           .then(
             response => {
               this.loading = false;
