@@ -64,6 +64,7 @@ class Collection(models.Model):
 
     class Meta:
         ordering = ['-pub_date']
+        verbose_name_plural = 'Collections'
 
     def __unicode__(self):
         return u'%s' % self.title
@@ -96,6 +97,7 @@ class Art(models.Model):
 
     class Meta:
         ordering = ['-pub_date']
+        verbose_name_plural = 'Works of art'
 
     def __unicode__(self):
         if self.title:
