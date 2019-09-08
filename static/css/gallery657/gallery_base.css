@@ -136,8 +136,7 @@
 #gallery657 .art-left {
   position: fixed;
   z-index: 1;
-  right: calc(50vw + 30px);
-  /*left: calc(50vw - 85px);*/
+  left: calc(50vw - 93px);
   color: white;
   top: 1em;
   border-radius: 10px;
@@ -153,7 +152,7 @@ cursor: pointer;
 #gallery657 .art-right {
 position: fixed;
 z-index: 1;
-left: calc(50vw + 30px);
+left: calc(50vw + 9px);
 top: 1em;
 border-radius: 10px;
 color: white;
@@ -170,12 +169,12 @@ cursor: pointer;
 position: fixed;
 z-index: 1;
 top: 1em;
+left: calc(50vw - 41px);
 border-radius: 10px;
 color: white;
 font-size: 2em;
 width: 50px;
 text-align: center;
-right: calc(50vw - 25px);
 }
 #gallery657 .art-backdrop div.art-close:hover {
 background-color: black;
@@ -208,6 +207,18 @@ cursor: pointer;
 #gallery657 .art-fade-enter,
 #gallery657 .art-fade-leave-to {
   opacity: 0;
+}
+
+#gallery_top {
+  margin: 1em 0px 0px 0px;
+  text-align: center;
+}
+#gallery_top > a {
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  padding: 6px 30px 0px 30px;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 600px) {
