@@ -15,7 +15,7 @@ from gallery657.serializers import ArtSerializer, CollectionSerializer
 
 
 def gallery_vue(request):
-    return render(request, 'gallery_vue.html')
+    return render(request, 'gallery_base.html')
 
 
 class ArtViewSet(ReadOnlyModelViewSet):

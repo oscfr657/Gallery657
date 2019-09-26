@@ -4,7 +4,7 @@
 A small picture gallery app with VueJs frontend and
 Django backend.
 
-## Installation ###
+## Setup ###
   
 ### Pip requirements ###
 
@@ -22,7 +22,6 @@ add to the INSTALLED_APPS
 
 ``` Python
     'django.contrib.sites',
-    'django.contrib.sitemaps',
 
     'rest_framework'
 
@@ -59,9 +58,9 @@ from django.conf.urls import include
     url(r'^gallery657/', include('gallery657.urls', namespace="gallery657" ),
 ```
 
-## App as component ##
+### HTML ###
 
-If you whant to use the app as a component at a bigger site you create the div  
+Where you want the app you put the div
 
 ``` html
 <div id="gallery657" >
@@ -74,14 +73,47 @@ where you whant the gallery to apear.
 and preferbly put
 
 ``` html
-<script src="static/js/gallery657/dist/build.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/gallery657/gallery_base.css" lazyload="">
 ```
 
-at the bottom of your index.html
+in the header and
 
-## Live example ##
 
-  www.oscfr.se/gallery
+``` html
+<script src="static/js/gallery657/dist/build.js" async=""></script>
+<script src="static/js/gallery657/dist/build.js.map" async=""></script>
+```
+
+at the bottom of your base.html
+
+## Optional ##
+
+### Sitemap ###
+
+Add to the INSTALLED_APPS
+
+``` Python
+    'django.contrib.sitemaps',
+```
+
+To the django projects' url.py add
+
+``` python
+from django.contrib.sitemaps import views as sitemaps_views
+from gallery657.sitemap import GallerySitemap
+```
+
+``` python
+SITEMAPS = {
+    'sitemaps': GallerySitemap
+}
+```
+
+and add to the urlpatterns
+
+``` python
+    url(r'^sitemap\.xml$', sitemaps_views.index, {'sitemaps': SITEMAPS}),
+```
 
 ## For development ##
 

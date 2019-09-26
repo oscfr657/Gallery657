@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
 try:
     from django.core.urlresolvers import reverse
-except  ImportError:
+except ImportError:
     from django.urls import reverse
 
 from django.contrib.sites.models import Site
