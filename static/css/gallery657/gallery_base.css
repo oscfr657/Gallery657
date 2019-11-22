@@ -136,7 +136,7 @@
 #gallery657 .art-left {
   position: fixed;
   z-index: 1;
-  left: calc(50vw - 93px);
+  left: calc(50vw - 75px);
   color: white;
   top: 1em;
   border-radius: 10px;
@@ -152,7 +152,7 @@ cursor: pointer;
 #gallery657 .art-right {
 position: fixed;
 z-index: 1;
-left: calc(50vw + 9px);
+left: calc(50vw + 25px);
 top: 1em;
 border-radius: 10px;
 color: white;
@@ -169,7 +169,7 @@ cursor: pointer;
 position: fixed;
 z-index: 1;
 top: 1em;
-left: calc(50vw - 41px);
+left: calc(50vw - 25px);
 border-radius: 10px;
 color: white;
 font-size: 2em;
