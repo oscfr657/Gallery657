@@ -23,9 +23,9 @@ add to the INSTALLED_APPS
 ``` Python
     'django.contrib.sites',
 
-    'rest_framework'
+    'rest_framework',
 
-    'gallery657'
+    'gallery657',
 ```
 
 Add this restframework settings
@@ -58,6 +58,10 @@ from django.conf.urls import include
     url(r'^gallery657/', include('gallery657.urls', namespace="gallery657" ),
 ```
 
+``` python
+    path('gallery657/', include('gallery657.urls', namespace='gallery657')),
+```
+
 ### HTML ###
 
 Where you want the app you put the div
@@ -73,7 +77,7 @@ where you whant the gallery to apear.
 and preferbly put
 
 ``` html
-<link rel="stylesheet" type="text/css" href="/static/css/gallery657/gallery_base.css" lazyload="">
+<link rel="stylesheet" type="text/css" href="/static/css/gallery657/gallery_base.css" >
 ```
 
 in the header and
