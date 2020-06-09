@@ -24,8 +24,11 @@ class ArtViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         try:
-            current_site = Site.find_for_request(self.request)
-        except:
+            from wagtail.core.models import Site as WagtailSite
+            wagtail_site = WagtailSite.find_for_request(self.request)
+            from django.contrib.sites.models import Site
+            current_site = Site.objects.get(domain=wagtail_site.hostname)
+        except Exception as e:
             current_site = get_current_site(self.request)
         queryset = Art.objects.filter(
             Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
@@ -49,8 +52,11 @@ class CollectionViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         try:
-            current_site = Site.find_for_request(self.request)
-        except:
+            from wagtail.core.models import Site as WagtailSite
+            wagtail_site = WagtailSite.find_for_request(self.request)
+            from django.contrib.sites.models import Site
+            current_site = Site.objects.get(domain=wagtail_site.hostname)
+        except Exception as e:
             current_site = get_current_site(self.request)
         queryset = Collection.objects.filter(
             Q(pub_date__lte=timezone.now()) | Q(pub_date__isnull=False)).filter(

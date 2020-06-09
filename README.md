@@ -140,6 +140,38 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
+#### For debuging ####
+
+Add to settings
+
+``` python
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'logfile': {
+            'level':'DEBUG',
+            'class':'logging.FileHandler',
+            'filename': BASE_DIR + "/debug.log",
+        },
+    },
+    'loggers': {
+        'gallery657': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+        },
+    }
+}
+```
+and where you need to debug add
+
+``` python
+import logging
+logger = logging.getLogger('gallery657')
+
+logger.debug('debug message')
+```
+
 ### VueJS app building ###
 
  > sudo apt-get install npm
