@@ -55,10 +55,6 @@ from django.conf.urls import include
 ```
 
 ``` python
-    url(r'^gallery657/', include('gallery657.urls', namespace="gallery657" ),
-```
-
-``` python
     path('gallery657/', include('gallery657.urls', namespace='gallery657')),
 ```
 

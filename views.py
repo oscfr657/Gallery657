@@ -23,9 +23,13 @@ class ArtViewSet(ReadOnlyModelViewSet):
     serializer_class = ArtSerializer
 
     def get_queryset(self):
+        try:
+            current_site = Site.find_for_request(self.request)
+        except:
+            current_site = get_current_site(self.request)
         queryset = Art.objects.filter(
             Q(pub_date__lte=timezone.now()) | Q(pub_date=None)).filter(
-                collection__sites=get_current_site(self.request)).filter(
+                collection__sites=current_site).filter(
                     Q(collection__pub_date__lte=timezone.now()) | Q(
                         collection__pub_date__isnull=False)
                 )
@@ -44,7 +48,11 @@ class CollectionViewSet(ReadOnlyModelViewSet):
     pagination_class = None
 
     def get_queryset(self):
+        try:
+            current_site = Site.find_for_request(self.request)
+        except:
+            current_site = get_current_site(self.request)
         queryset = Collection.objects.filter(
             Q(pub_date__lte=timezone.now()) | Q(pub_date__isnull=False)).filter(
-                sites=get_current_site(self.request))
+                sites=current_site)
         return queryset
