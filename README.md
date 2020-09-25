@@ -31,7 +31,7 @@ add to the INSTALLED_APPS
 Add this restframework settings
 
 ``` python
-  REST_FRAMEWORK {
+  REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -77,7 +77,6 @@ and preferbly put
 ```
 
 in the header and
-
 
 ``` html
 <script src="static/js/gallery657/dist/build.js" async=""></script>
@@ -140,7 +139,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
-#### For debuging ####
+### For debuging ###
 
 Add to settings
 
@@ -163,6 +162,7 @@ LOGGING = {
     }
 }
 ```
+
 and where you need to debug add
 
 ``` python
