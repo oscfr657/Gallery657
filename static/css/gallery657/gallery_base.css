@@ -72,11 +72,15 @@
 
 #gallery657 #collection_view {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  display: grid;
+  width: calc(100% - 2em);
   padding: 2.7rem 0 0 0;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry;
+  max-width: 100%;
+  grid-row-gap: 1em;
+  grid-column-gap: 1em;
+  margin: auto;
 }
 
 #gallery657 #collection_view button {
@@ -92,13 +96,11 @@
 }
 
 #gallery657 .art_item {
-  display: flex;
-  margin: 10px;
   overflow: hidden;
 }
 #gallery657 .art_item img {
-  max-height:200px;
   transition: all 2s ease;
+  width: 100%;
 }
 #gallery657 .art_item img:hover {
   cursor: pointer;
@@ -220,9 +222,24 @@ cursor: pointer;
   text-decoration: none;
 }
 
+@media screen and (max-width: 1200px) {
+  #gallery657 #collection_view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #gallery657 #collection_view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 600px) {
   #gallery657 .collection_list ul li {
     display: inline;
+  }
+  #gallery657 #collection_view {
+    grid-template-columns: repeat(1, 1fr);
   }
   #gallery657 .art_item {
     margin-top: 0px;
