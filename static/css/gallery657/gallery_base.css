@@ -119,6 +119,12 @@
   #gallery657 .art_item img {
     width: 100%;
     max-height: initial;
+    max-width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    #gallery657 .art_item img {
+      width: 25vw;
+    }
   }
 
 }
