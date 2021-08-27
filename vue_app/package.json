@@ -5,7 +5,7 @@
   "author": "Oscar Froberg",
   "private": false,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress"
+    "build": "webpack --progress"
   },
   "dependencies": {
     "vue-loader": "^12.0.0",

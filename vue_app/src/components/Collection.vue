@@ -69,9 +69,24 @@ export default {
     },
     fetchData() {
       this.loading = true;
-      if (this.$route.params.number) {
+      if (this.$route.params.slug) {
         this.$http
-          .get("/gallery657/api/art/?collection=" + this.$route.params.number)
+          .get("/gallery657/api/art/?collection_slug=" + this.$route.params.slug)
+          .then(
+            response => {
+              this.loading = false;
+              this.collection = response.body.results;
+              this.scroll_url = response.body.next;
+            },
+            response => {
+              console.log("Collection not found error");
+              console.log(response);
+              this.loading = false;
+            }
+          );
+      } else if (this.$route.params.number) {
+        this.$http
+          .get("/gallery657/api/art/?collection_number=" + this.$route.params.number)
           .then(
             response => {
               this.loading = false;
@@ -101,18 +116,6 @@ export default {
           );
       }
     },
-    scroll() {
-      let gallery657 = document.getElementById('gallery657');
-      let collections_wrap = gallery657.firstChild;
-      collections_wrap.onscroll = function() {
-        console.log('collections_wrap 234');
-      };
-      let collection_view = document.getElementById('collection_view');
-      collection_view.onscroll = function() {
-        console.log('collection_view 234');
-      };
-    },
-
     more() {
       this.$http.get(this.scroll_url).then(
         response => {
@@ -131,7 +134,7 @@ export default {
     }
   },
   mounted() {
-    this.scroll();
+    this.more();
   }
 };
 </script>

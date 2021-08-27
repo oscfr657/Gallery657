@@ -27,6 +27,7 @@ class CollectionAdmin(admin.ModelAdmin):
     inlines = [ArtInline,]
     list_display = ('title', 'pub_date')
     save_on_top = True
+    prepopulated_fields = {"slug": ("title",)}
 
     def get_readonly_fields(self, request, obj=None):
         if request.user.is_superuser:

@@ -24,12 +24,14 @@ class GetAllCollectionsTest(TestCase):
         now = timezone.now()
         collectiion1 = Collection.objects.create(
             title='Paintings',
-            pub_date=now)
+            pub_date=now,
+            slug='paintings')
         collectiion1.sites.add(site)
         collectiion1.save()
         collectiion2 = Collection.objects.create(
             title='Photos',
-            pub_date=now)
+            pub_date=now,
+            slug='photos')
         collectiion2.sites.add(site)
         collectiion2.save()
 
@@ -51,15 +53,16 @@ class GetSingleCollectionTest(TestCase):
         now = timezone.now()
         self.paintings = Collection.objects.create(
             title='Paintings',
-            pub_date=now)
+            pub_date=now,
+            slug='paintings')
         self.paintings.sites.add(site)
         self.paintings.save()
 
     def test_get_valid_single_collection(self):
-        response = CLIENT.get('/gallery657/api/collection/{0}/'.format(self.paintings.pk))
+        response = CLIENT.get('/gallery657/api/collection/?collection_slug={0}'.format(self.paintings.slug))
         collection = Collection.objects.get(pk=self.paintings.pk)
         serializer = CollectionSerializer(collection)
-        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(json.loads(response.content)[0], serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_get_invalid_single_collection(self):
@@ -77,7 +80,7 @@ class BlockCreateCollectionTest(TestCase):
         response = CLIENT.post('/gallery657/api/collection/',
                                data=json.dumps(self.collection),
                                content_type='application/json')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 class BlockUpdateCollectionTest(TestCase):
@@ -91,7 +94,7 @@ class BlockUpdateCollectionTest(TestCase):
         response = CLIENT.put('/gallery657/api/collection/{0}/'.format(self.paintings.pk),
                               data=json.dumps(self.update_data),
                               content_type='application/json')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 class BlockDeleteCollectionTest(TestCase):
@@ -103,4 +106,4 @@ class BlockDeleteCollectionTest(TestCase):
     def test_fail_delete_collection(self):
         response = CLIENT.delete('/gallery657/api/collection/{0}/'.format(
             self.paintings.pk))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)

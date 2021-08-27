@@ -36,12 +36,20 @@ class ArtViewSet(ReadOnlyModelViewSet):
                     Q(collection__pub_date__lte=timezone.now()) | Q(
                         collection__pub_date__isnull=False)
                 )
-        collection = self.request.query_params.get('collection', None)
-        if collection:
+        collection_slug = self.request.query_params.get('collection_slug', None)
+        if collection_slug:
             try:
-                queryset = queryset.filter(collection=collection)
+                queryset = queryset.filter(collection__slug=collection_slug)
             except ValueError:
                 raise NotFound
+
+        collection_number = self.request.query_params.get('collection_number', None)
+        if collection_number:
+            try:
+                queryset = queryset.filter(collection=collection_number)
+            except ValueError:
+                raise NotFound
+
         return queryset
 
 

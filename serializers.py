@@ -15,4 +15,4 @@ class CollectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Collection
-        fields = ('pk', 'title')
+        fields = ('pk', 'title', 'slug')

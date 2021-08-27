@@ -60,6 +60,8 @@ class Collection(models.Model):
     title = models.CharField(max_length=50)
     pub_date = models.DateTimeField(blank=True, null=True)
 
+    slug = models.SlugField(unique=True, max_length=100, blank=True, null=True)
+
     objects = models.Manager()
 
     class Meta:
@@ -73,7 +75,7 @@ class Collection(models.Model):
         return u'%s' % self.title
 
     def get_absolute_url(self):
-        return reverse('gallery657:gallery') + str(self.pk)
+        return '/gallery/#/' + self.slug
 
 
 class Art(models.Model):

@@ -11,8 +11,12 @@ export default {
       component: Gallery,
       children: [
         {
+          path: "/:slug/",
+          name: "collection_slug",
+          component: Collection
+        }, {
           path: "/:number/",
-          name: "collection",
+          name: "collection_number",
           component: Collection
         }, {
           path: '/',

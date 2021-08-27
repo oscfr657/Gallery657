@@ -4,8 +4,8 @@
       <router-link :to="{ name: 'all_art'}" class="collections_button" >Collections</router-link>
       <div class="collection_list">
           <router-link 
-              v-for="collection in collections" :key="collection.pk" 
-              :to="{ name: 'collection', params: { number:collection.pk } }">
+              v-for="collection in collections" :key="collection.slug" 
+              :to="{ name: 'collection_slug', params: { slug:collection.slug } }">
             {{ collection.title| capitalize }}
           </router-link>
       </div>
