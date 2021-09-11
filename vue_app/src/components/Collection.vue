@@ -1,9 +1,11 @@
 
 <template>
-    <div id="collection_view">
-      <div v-for="(art, index) in collection" :key="art.pk" class="art_item">
-        <img @click="showArt(art.pk, index)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
-        <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
+    <div>
+      <div id="collection_view">
+        <div v-for="(art, index) in collection" :key="art.pk" class="art_item">
+          <img @click="showArt(art.pk, index)" v-if="art.thumb_nail!==null" :src="art.thumb_nail" :alt="art.title"/>
+          <img @click="showArt(art.pk, index)" v-else-if="art.media_file!==null" :src="art.media_file" :alt="art.title"/>
+        </div>
       </div>
       <div class="collection_more">
         <button v-if="this.scroll_url!==null" v-on:click="more()">+</button>
@@ -67,6 +69,22 @@ export default {
     closeArt() {
       this.isArt = false;
     },
+    more() {
+      this.$http.get(this.scroll_url).then(
+        response => {
+          response.body.results.forEach(element => {
+            this.collection.push(element);
+          });
+          this.scroll_url = response.body.next;
+          this.loading = false;
+        },
+        response => {
+          console.log("No art found error");
+          console.log(response);
+          this.loading = false;
+        }
+      );
+    },
     fetchData() {
       this.loading = true;
       if (this.$route.params.slug) {
@@ -115,26 +133,7 @@ export default {
             }
           );
       }
-    },
-    more() {
-      this.$http.get(this.scroll_url).then(
-        response => {
-          response.body.results.forEach(element => {
-            this.collection.push(element);
-          });
-          this.scroll_url = response.body.next;
-          this.loading = false;
-        },
-        response => {
-          console.log("No art found error");
-          console.log(response);
-          this.loading = false;
-        }
-      );
     }
-  },
-  mounted() {
-    this.more();
   }
 };
 </script>
