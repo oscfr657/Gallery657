@@ -117,6 +117,8 @@ and add to the urlpatterns
 ## For development ##
 
 > pip install pylint
+>
+> pylint -E gallery657/
 
 To the Django settings.py add
 
