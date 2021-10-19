@@ -1,11 +1,14 @@
 
 # Gallery 657 #
 
-A small picture gallery app with VueJs frontend and
-Django backend.
+A small image gallery web app, with Vue frontend and Django backend.
 
 ## Setup ###
   
+### libmagic ###
+
+> apt install libmagic
+
 ### Pip requirements ###
 
 > pip install -r requirements.txt
