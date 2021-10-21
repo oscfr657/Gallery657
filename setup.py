@@ -11,7 +11,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="gallery657",
-    version='2021.10.18-alpha',
+    version='2021.10.18a0',
     description='A small image gallery app, with Vue frontend and Django backend.',
     long_description=long_description,
     long_description_content_type='text/markdown',
