@@ -24,7 +24,7 @@ class ArtViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         try:
-            from wagtail.core.models import Site as WagtailSite
+            from wagtail.models import Site as WagtailSite
             wagtail_site = WagtailSite.find_for_request(self.request)
             from django.contrib.sites.models import Site
             current_site = Site.objects.get(domain=wagtail_site.hostname)
@@ -49,7 +49,6 @@ class ArtViewSet(ReadOnlyModelViewSet):
                 queryset = queryset.filter(collection=collection_number)
             except ValueError:
                 raise NotFound
-
         return queryset
 
 
@@ -60,7 +59,7 @@ class CollectionViewSet(ReadOnlyModelViewSet):
 
     def get_queryset(self):
         try:
-            from wagtail.core.models import Site as WagtailSite
+            from wagtail.models import Site as WagtailSite
             wagtail_site = WagtailSite.find_for_request(self.request)
             from django.contrib.sites.models import Site
             current_site = Site.objects.get(domain=wagtail_site.hostname)

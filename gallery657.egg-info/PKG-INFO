@@ -1,11 +1,10 @@
 Metadata-Version: 2.1
 Name: gallery657
-Version: 2021.10.18a0
+Version: 2023.5.4a0
 Summary: A small image gallery app, with Vue frontend and Django backend.
 Home-page: https://github.com/oscfr657/Gallery657
 Author: Oscar F
 License: Hippocratic License Version Number: 2.1 with Commons Clause License Condition v1.0
-Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
 Classifier: Environment :: Web Environment
 Classifier: Intended Audience :: Developers
@@ -24,6 +23,15 @@ License-File: LICENSE.md
 # Gallery 657 #
 
 A small image gallery web app, with Vue frontend and Django backend.
+
+## Compatible ##
+
+### Tested with ###
+
+``` Python
+django==4.2.1 
+wagtail==5.0
+```
 
 ## Setup ###
   
@@ -76,7 +84,7 @@ Add this restframework settings
 To the django projects' url.py add
 
 ``` python
-from django.conf.urls import include
+from django.urls import include
 ```
 
 ``` python
@@ -210,5 +218,3 @@ logger.debug('debug message')
 and
 
 > npm run build
-
-

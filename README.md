@@ -3,6 +3,15 @@
 
 A small image gallery web app, with Vue frontend and Django backend.
 
+## Compatible ##
+
+### Tested with ###
+
+``` Python
+django==4.2.1 
+wagtail==5.0
+```
+
 ## Setup ###
   
 ### libmagic ###
@@ -54,7 +63,7 @@ Add this restframework settings
 To the django projects' url.py add
 
 ``` python
-from django.conf.urls import include
+from django.urls import include
 ```
 
 ``` python
